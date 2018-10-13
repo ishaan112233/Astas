@@ -1,0 +1,86 @@
+<html>
+<head>
+  <title>Faculty_Login</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">   
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="stylesheets/style.css">     
+<link rel="stylesheet" href="stylesheets/login_page.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="/">Time-table</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <span style="display:inline-block; width: 590px;"></span>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="/" class="nav-link">Students</a></li>
+          <li class="nav-item"><a href="/faculty" class="nav-link">Faculty</a></li>
+          <li class="nav-item"><a href="/make-timetable" class="nav-link">Make Time-table</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cotn_principal">
+      <div class="cont_centrar" >
+        
+        <div class="cont_login" >
+      <div class="cont_info_log_sign_up">
+      <div class="cont_info_log_sign_up" style="">
+            <div class="col_md_login" >
+      <div class="cont_ba_opcitiy" style="background-image: linear-gradient(to right top, #161615, #272625, #383737, #494949, #5c5c5c);">
+              
+              <h2 >LOGIN</h2>  
+        <p>TEACHER</p> 
+        <button  class="btn_login" onclick="cambiar_login()">LOGIN</button>
+        </div>
+        </div>
+      <div class="col_md_sign_up">
+      <div class="cont_ba_opcitiy" style="background-image: linear-gradient(to right top, #161615, #272625, #383737, #494949, #5c5c5c);">
+        <h2>LOGIN</h2>
+        <p>HOD</p>
+      
+        <button class="btn_sign_up" onclick="cambiar_sign_up()">LOGIN</button>
+      </div>
+        </div>
+             </div>
+      
+          
+          
+      <div class="cont_forms" id="form-faculty">
+       <form class="cont_form_login" method="POST" action="/teacher_page"  onsubmit="return checkEmail()">
+          <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+         <h2>LOGIN</h2>
+       <input type="email" placeholder="Email" name="teacher" class="txtEmail" required/>
+      <!-- <input type="password" placeholder="Password" id="password_teacher" minlength="8" maxlength="15" required/> -->
+      <button type="submit" class="btn_login" id="submit">TEACHER</button>
+       </form>
+        <form class="cont_form_sign_up"  method="POST" action="/HOD" class="txtEmail" onsubmit="return checkEmail()">
+      <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+      <br><br>
+           <h2>LOGIN</h2>
+           <input type="email" placeholder="Email" class="p1" name="email_hod" required/>
+           <!-- <input type="password" placeholder="Password" id="password_hod" minlength="8" maxlength="15" required/> -->
+      <button type="submit" class="btn_sign_up" id="submit">HOD</button>
+         </form>
+      </div>
+        </div>
+       </div>
+      </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  
+<script src="javascripts/login.js"></script> 
+</body>
+	
+</html>

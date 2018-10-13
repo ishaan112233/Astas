@@ -1,0 +1,137 @@
+
+<!--    Students Timetable         -->
+
+ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Astas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        table{
+       border-collapse: collapse;
+        }
+    td,th {
+    border: 1px solid black;
+    width: 100px;
+    
+      }
+    </style>
+
+</head>
+<body>
+       <center>
+           <h3 ><%= data.Stream %> &nbsp; <%= data.section %>  </h3>
+        </center>   
+        <table class="mx-auto">
+              
+               <tr>
+                   <th></th>
+                   <th>
+                       1<br>
+                       <small><b>9:00-9:55</b></small>
+                   </th>
+                   <th>
+                       2<br>
+                       <small><b>9:55-10:50</b></small>
+                    </th>
+                   <th>
+                       3<br>
+                       <small><b>10:50-11:45</b></small> 
+                   </th>
+                   <th>
+                       4<br>
+                       <small><b>11:45-12:40</b></small>
+                    </th>
+                   <th>
+                       5<br>
+                       <small><b>12:40-1:35</b></small>
+                   </th>
+                   <th>
+                       6<br>
+                       <small><b>1:35-2:30</b></small>
+                   </th>
+                   <th>
+                       7<br>
+                       <small><b>2:30-3:25</b></small>
+                   </th>
+                   <th>
+                      8<br>
+                      <small><b>3:25-4:20</b></small>
+                   </th>
+               </tr>
+               
+                <tr>
+                        <td><b>Monday</b></td>
+                            <%  for(let i=0; i < 8 ; i++){   %>
+                                <td>
+                                    <center><%=  data.Subject[i] %></center><br>
+                                    <small><%=  data.Venue[i] %></small>
+                                </td>
+                            <%    }  %>    
+                </tr>
+                <tr>
+                        <td><b>Tuesday</b></td>
+                        <%  for(let i=8; i < 16 ; i++){   %>
+                            <td>
+                                <center><%=  data.Subject[i] %></center><br>
+                                <small><%=  data.Venue[i] %></small>
+                            </td>
+                        <%    }  %>   
+                </tr>   
+                <tr>
+                        <td><b>Wednesday</b></td>
+                        <%  for(let i=16; i < 24 ; i++){   %>
+                            <td>
+                                <center><%=  data.Subject[i] %></center><br>
+                                <small><%=  data.Venue[i] %></small>
+                            </td>
+                        <%    }  %>   
+                </tr> 
+                <tr>
+                        <td><b>Thursday</b></td>
+                        <%  for(let i=24; i < 32 ; i++){   %>
+                            <td>
+                                <center><%=  data.Subject[i] %></center><br>
+                                <small><%=  data.Venue[i] %></small>
+                            </td>
+                        <%    }  %>   
+                </tr>          
+                <tr>
+                        <td><b>Friday</b></td>
+                        <%  for(let i=32; i < 40 ; i++){   %>
+                            <td>
+                                <center><%=  data.Subject[i] %></center><br>
+                                <small><%=  data.Venue[i] %></small>
+                            </td>
+                        <%    }  %>   
+                </tr>   
+                <tr>
+                        <td><b>Saturday</b></td>
+                        <%  for(let i=40; i < 48 ; i++){   %>
+                            <td>
+                                <center><%=  data.Subject[i] %></center><br>
+                                <small><%=  data.Venue[i] %></small>
+                            </td>
+                        <%    }  %>   
+                </tr>   
+                <tr>
+                        <td><b>Sunday</b></td>
+                        <%  for(let i=48; i < 56 ; i++){   %>
+                            <td>
+                                <center><%=  data.Subject[i] %></center><br>
+                                <small><%=  data.Venue[i] %></small>
+                            </td>
+                        <%    }  %>   
+                </tr>   
+                       
+            </table>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</html>

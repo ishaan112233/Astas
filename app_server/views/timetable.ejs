@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Table</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<link rel="stylesheet" href="styles.css">-->
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<!--<script src="script.js"></script>-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/animate1.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/table_util.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/table_main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	<div id='cssmenu'>
+	<ul>
+	   <li class='has-sub'><a href='#'><span>Semester</span></a>
+	      <ul>
+	         <li><a href='#'><span>1st Semester</span></a></li>
+	         <li><a href='#'><span>2nd Semester</span></a></li>
+	         <li><a href='#'><span>3rd Semester</span></a></li>
+	         <li><a href='#'><span>4th Semester</span></a></li>
+	         <li><a href='#'><span>5th Semester</span></a></li>
+	         <li><a href='#'><span>6th Semester</span></a></li>
+	         <li><a href='#'><span>7th Semester</span></a></li>
+	         <li class='last'><a href='#'><span>8th Semester</span></a></li>
+	      </ul>
+	   </li>
+		 <li class='has-sub'><a href='#'><span>Subject</span></a>
+			 <ul>
+					<li><a href='#'><span>Computer Networks</span></a></li>
+					<li><a href='#'><span>Data Science</span></a></li>
+					<li><a href='#'><span>APC</span></a></li>
+					<li><a href='#'><span>Java</span></a></li>
+					<li class='last'><a href='#'><span>JS</span></a></li>
+			 </ul>
+		</li>
+		<li class='has-sub'><a href='#'><span>Teacher</span></a>
+			<ul>
+				 <li><a href='#'><span>Mr. Kamaldeep</span></a></li>
+				 <li><a href='#'><span>Ms. Jytosna</span></a></li>
+				 <li class='last'><a href='#'><span>Ms. Charu</span></a></li>
+			</ul>
+	 </li>
+	</ul>
+	</div>
+
+
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100 ver1 m-b-110">
+					<table data-vertable="ver1">
+						<thead>
+							<tr class="row100 head">
+								<th class="column100 column1" data-column="column1"></th>
+								<th class="column100 column2" data-column="column2"><h5>1</h5><br>
+									<b>9:00</b>
+								</th>
+								<th class="column100 column3" data-column="column3">
+										<h5>2</h5><br>
+										<b>9:55</b>
+								</th>
+								<th class="column100 column4" data-column="column4">
+										<h5>3</h5><br>
+										<b>10:50</b>
+								</th>
+								<th class="column100 column5" data-column="column5">
+										<h5>4</h5><br>
+										<b>11:45</b>
+								</th>
+								<th class="column100 column6" data-column="column6">
+										<h5>5</h5><br>
+										<b>12:40</b>
+								</th>
+								<th class="column100 column7" data-column="column7">
+										<h5>6</h5><br>
+										<b>1:35</b>
+								</th>
+								<th class="column100 column8" data-column="column8">
+										<h5>7</h5><br>
+										<b>2:30</b>
+								</th>
+								<th class="column100 column9" data-column="column9">
+										<h5>8</h5><br>
+										<b>3:25</b>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+						 <form action="/showtimetable" method="POST" >
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1" >
+									<input type="text" name="Day" class="input-table" value="Monday">
+								</td>
+								<td class="column100 column2 input-box" data-column="column2" >
+									<input type="text" name="Subject" class="input-class" value="DS" ><br>
+									<small>
+										<input type="text" name="Venue" value="TG-105" class="input-box" >
+									</small>
+								</td>
+								<td class="column100 input-box column3" data-column="column3" >
+									<input type="text" name="Subject" class="input-class" value="DS" ><br>
+									<small>
+										<input type="text" class="input-box"  name="Venue" value="TG-105">
+									</small>
+								</td>
+								<td class="column100 input-box column4" data-column="column4" >
+									<input type="text" name="Subject" class="input-class" value="EM" ><br>
+									<small>
+										<input type="text" name="Venue" value="TG-105" class="input-box" >
+									</small>
+								</td>
+								<td class="column100 column5 input-box" data-column="column5" >
+									<input type="text" name="Subject" class="input-class" value="EM" ><br>
+									<small>
+										<input type="text" name="Venue" value="TG-105" class="input-box" >
+									</small>
+								</td>
+								<td class="column100 input-box column6" data-column="column6" >
+									<input type="text" name="Subject" class="input-class" value="EM" ><br>
+									<small>
+										<input type="text" name="Venue" value="TG-105" class="input-box" >
+									</small>
+								</td>
+								<td class="column100 column7 input-box" data-column="column7" >
+									<input type="text" name="Subject" class="input-class"  value="OHH" ><br>
+									<small>
+										<input type="text" name="Venue" class="input-box"  value="TG-105">
+									</small>
+								</td>
+								<td class="column100 column8 input-box" data-column="column8" >
+									<input type="text" name="Subject" class="input-class" value="OHH" ><br>
+									<small>
+										<input type="text" class="input-box"  name="Venue" value="TG-105">
+									</small>
+								</td>
+								<td class="column100 column9 input-box" data-column="column9" >
+									<input type="text" name="Subject" class="input-class" value="LOP" ><br>
+									<small>
+										<input type="text" class="input-box" name="Venue" value="TG-105">
+									</small>
+								</td>
+							</tr>
+
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1"><input type="text"  class="input-table" name="Day" value="Tuesday"  ></td>
+								<td class="column100 column2" data-column="column2" > 
+									<input type="text" name="Subject" class="input-class input-box" value="DS" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column3" data-column="column3" >
+									<input type="text" name="Subject" class="input-class input-box" value="IP" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column4" data-column="column4" >
+									<input type="text" name="Subject" class="input-class input-box" value="IP" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column5" data-column="column5" >
+								    <input type="text" name="Subject" class="input-class input-box" value="OS" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column6" data-column="column6" >
+									<input type="text" name="Subject" class="input-class input-box" value="OS" ><br>
+									<small>
+							     		<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column7" data-column="column7" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>	
+								</td>
+								<td class="column100 column8" data-column="column8" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+										<input type="text" class="input-box" name="Venue" value="NB-104">
+									</small>	
+								</td>
+								<td class="column100 column9" data-column="column9" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>	
+								</td>
+							</tr>
+
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1">
+									<input type="text"  class="input-table" value="Wednesday" name="Day"  >
+								</td>
+								<td class="column100 column2" data-column="column2" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column3" data-column="column3" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column4" data-column="column4" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column5" data-column="column5" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column6" data-column="column6" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+											<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column7" data-column="column7" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+										<input type="text" name="Venue" value="NB-104" class="input-box">
+									</small>
+								</td>
+								<td class="column100 column8" data-column="column8" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+										<input type="text" name="Venue" class="input-box" value="NB-104">
+									</small>
+								</td>
+								<td class="column100 column9" data-column="column9" >
+									<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+									<small>
+										<input type="text" name="Venue" class="input-box" value="NB-104">
+									</small>
+								</td>
+							</tr>
+
+							<tr class="row100">
+									<td class="column100 column1" data-column="column1">
+										<input type="text"  class="input-table " name="Day" value="Thursday"  >
+									</td>
+									<td class="column100 column2" data-column="column2" > 
+										<input type="text" name="Subject" class="input-class input-box" value="DS" ><br>
+										<small>
+											<input type="text" name="Venue" class="input-box" value="NB-104">
+										</small>
+									</td>
+									<td class="column100 column3" data-column="column3" >
+										<input type="text" name="Subject" class="input-class input-box" value="IP" ><br>
+										<small>
+											<input type="text" name="Venue" value="NB-104" class="input-box">
+										</small>
+									</td>
+									<td class="column100 column4" data-column="column4" >
+										<input type="text" name="Subject" class="input-class input-box" value="IP" ><br>
+										<small>
+											<input type="text" name="Venue" value="NB-104" class="input-box">
+										</small>
+									</td>
+									<td class="column100 column5" data-column="column5" >
+										<input type="text" name="Subject" class="input-class input-box" value="OS" ><br>
+										<small>
+											<input type="text" name="Venue" value="NB-104" class="input-box">
+										</small>
+									</td>
+									<td class="column100 column6" data-column="column6" >
+										<input type="text" name="Subject" class="input-class input-box" value="OS" ><br>
+										<small>
+											 <input type="text" name="Venue" value="NB-104" class="input-box">
+										</small>
+									</td>
+									<td class="column100 column7" data-column="column7" >
+										<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+										<small>
+											<input type="text" name="Venue" value="NB-104" class="input-box">
+										</small>	
+									</td>
+									<td class="column100 column8" data-column="column8" >
+										<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+										<small>
+											<input type="text" name="Venue" value="NB-104" class="input-box">
+										</small>	
+									</td>
+									<td class="column100 column9" data-column="column9" >
+										<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+										<small>
+											<input type="text" name="Venue" value="NB-104" class="input-box">
+										</small>	
+									</td>
+								</tr>
+								<tr class="row100">
+										<td class="column100 column1" data-column="column1"><input type="text"  class="input-table" name="Day" value="Friday"  ></td>
+										<td class="column100 column2" data-column="column2" > 
+											<input type="text" name="Subject" class="input-class input-box" value="DS" ><br>
+											<small>
+												<input type="text" name="Venue" value="NB-104" class="input-box">
+											</small>
+										</td>
+										<td class="column100 column3" data-column="column3" >
+											<input type="text" name="Subject" class="input-class input-box" value="IP" ><br>
+											<small>
+												<input type="text" name="Venue" value="NB-104" class="input-box">
+											</small>
+										</td>
+										<td class="column100 column4" data-column="column4" >
+											<input type="text" name="Subject" class="input-class input-box" value="IP" ><br>
+											<small>
+												<input type="text" name="Venue" value="NB-104" class="input-box">
+											</small>
+										</td>
+										<td class="column100 column5" data-column="column5" >
+											<input type="text" name="Subject" class="input-class input-box" value="OS" ><br>
+											<small>
+												<input type="text" name="Venue" value="NB-104" class="input-box">
+											</small>
+										</td>
+										<td class="column100 column6" data-column="column6" >
+											<input type="text" name="Subject" class="input-class input-box" value="OS" ><br>
+											<small>
+												 <input type="text" name="Venue" value="NB-104" class="input-box">
+											</small>
+										</td>
+										<td class="column100 column7" data-column="column7" >
+											<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+											<small>
+												<input type="text" name="Venue" value="NB-104" class="input-box">
+											</small>	
+										</td>
+										<td class="column100 column8" data-column="column8" >
+											<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+											<small>
+												<input type="text" name="Venue" value="NB-104" class="input-box">
+											</small>	
+										</td>
+										<td class="column100 column9" data-column="column9" >
+											<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+											<small>
+												<input type="text" name="Venue" value="NB-104" class="input-box">
+											</small>	
+										</td>
+									</tr>
+
+									<tr class="row100">
+											<td class="column100 column1" data-column="column1"><input type="text"  class="input-table" name="Day" value="Saturday"  ></td>
+											<td class="column100 column2" data-column="column2" > 
+												<input type="text" name="Subject" class="input-class input-box" value="DS" ><br>
+												<small>
+													<input type="text" name="Venue" value="NB-104" class="input-box">
+												</small>
+											</td>
+											<td class="column100 column3" data-column="column3" >
+												<input type="text" name="Subject" class="input-class input-box" value="IP" ><br>
+												<small>
+													<input type="text" name="Venue" value="NB-104" class="input-box">
+												</small>
+											</td>
+											<td class="column100 column4" data-column="column4" >
+												<input type="text" name="Subject" class="input-class" value="IP" ><br>
+												<small>
+													<input type="text" name="Venue" value="NB-104" class="input-box">
+												</small>
+											</td>
+											<td class="column100 column5" data-column="column5" >
+												<input type="text" name="Subject" class="input-class input-box" value="OS" ><br>
+												<small>
+													<input type="text" name="Venue" value="NB-104" class="input-box">
+												</small>
+											</td>
+											<td class="column100 column6" data-column="column6" >
+												<input type="text" name="Subject" class="input-class input-box" value="OS" ><br>
+												<small>
+													 <input type="text" name="Venue" value="NB-104" class="input-box">
+												</small>
+											</td>
+											<td class="column100 column7" data-column="column7" >
+												<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+												<small>
+													<input type="text" name="Venue" value="NB-104" class="input-box">
+												</small>	
+											</td>
+											<td class="column100 column8" data-column="column8" >
+												<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+												<small>
+													<input type="text" name="Venue" value="NB-104" class="input-box">
+												</small>	
+											</td>
+											<td class="column100 column9" data-column="column9" >
+												<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+												<small>
+													<input type="text" name="Venue" value="NB-104" class="input-box">
+												</small>	
+											</td>
+										</tr>
+
+										<tr class="row100">
+												<td class="column100 column1" data-column="column1"><input type="text"  class="input-table" name="Day" value="Sunday"  ></td>
+												<td class="column100 column2" data-column="column2" > 
+													<input type="text" name="Subject" class="input-class input-box" value="DS" ><br>
+													<small>
+														<input type="text" name="Venue" value="NB-104">
+													</small>
+												</td>
+												<td class="column100 column3" data-column="column3" >
+													<input type="text" name="Subject" class="input-class input-box" value="IP" ><br>
+													<small>
+														<input type="text" name="Venue" value="NB-104" class="input-box">
+													</small>
+												</td>
+												<td class="column100 column4" data-column="column4" >
+													<input type="text" name="Subject" class="input-class input-box" value="IP" ><br>
+													<small>
+														<input type="text" name="Venue" value="NB-104" class="input-box">
+													</small>
+												</td>
+												<td class="column100 column5" data-column="column5" >
+													<input type="text" name="Subject" class="input-class input-box" value="OS" ><br>
+													<small>
+														<input type="text" name="Venue" value="NB-104" class="input-box">
+													</small>
+												</td>
+												<td class="column100 column6" data-column="column6" >
+													<input type="text" name="Subject" class="input-class input-box" value="OS" ><br>
+													<small>
+														 <input type="text" name="Venue" value="NB-104" class="input-box">
+													</small>
+												</td>
+												<td class="column100 column7" data-column="column7" >
+													<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+													<small>
+														<input type="text" name="Venue" value="NB-104" class="input-box">
+													</small>	
+												</td>
+												<td class="column100 column8" data-column="column8" >
+													<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+													<small>
+														<input type="text" name="Venue" value="NB-104" class="input-box">
+													</small>	
+												</td>
+												<td class="column100 column9" data-column="column9" >
+													<input type="text" name="Subject" class="input-class input-box" value="NM" ><br>
+													<small>
+														<input type="text" name="Venue" value="NB-104" class="input-box">
+													</small>	
+												</td>
+											</tr>
+						</tbody>
+					</table>
+				</div>
+				</div>
+			</div>
+	</div>
+		
+		     <div style="float:right;" class="mt-5">
+     			<span >Stream:</span >
+				<input type="text" class="form-control mb-2 mr-sm-2" name="Stream" placeholder="Enter Stream here">
+				<br>
+				<span >Section:</span >
+				<input type="text" class="form-control mb-2 mr-sm-2" name="section" placeholder="Enter Section here" required>
+				
+				<span >Year:</span >
+				<input type="text" class="form-control mb-2 mr-sm-2" name="Year" placeholder="Enter Study year here" required>
+				<br>
+				<span >Teacher:</span >
+				<button type="submit" class="btn btn-primary">Generate</button>
+			 </div>		
+		</form>	
+		
+		 
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+	
+	<script src="javascripts/select2.min.js"></script>
+	<script src="javascripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+    <title>Astas</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+      
+</head>
+<body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/">Astas</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="/moderator">Add Faculty <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="/list-of-faculties">Faculties</a>
+                    <!-- <a class="nav-item nav-link" href="#">Pricing</a> -->
+
+                  </div>
+                </div>
+              </nav>
+
+
+
+
+    <h3 class="text-center">Add Faculty Here</h3><br> 
+      
+    <form style="width:60%;padding:5%;border:1px solid #e8e8e8;height:500px; margin-left:4%;" method="POST" action="/moderator" >
+       <div style="margin-top:-8%;"> 
+          <div class="form-group col-md-8">
+            <label for="Id"><b>Id</b></label>
+            <input type="text" class="form-control" name="Fid" required placeholder="Faculty's Id">
+          </div>
+        
+        <div class="form-group col-md-8">
+          <label for="tname"><b>Name:</b></label>
+          <input type="text" class="form-control" name="Fname" required  placeholder="Faculty's name">
+        </div>
+        <div class="form-group col-md-8">
+          <label for="tsubject"><b>Subject</b></label>
+          <input type="text" class="form-control" name="Fsubject"  placeholder="Enter Teaching subject">
+        </div>
+    
+          <div class="form-group col-md-8">
+            <label for="contact"><b>Contact No.</b></label>
+            <input type="number" class="form-control" placeholder="Mobile number" required name="Fcontact">
+          </div>
+          <div class="form-group col-md-8">
+            <label for="position"><b>Position</b></label>
+            <select  class="form-control" name="Fposition">
+              <option selected value="Lecturer">Lecturer</option>
+              <option value="Junior Assistant">Junior Assistant</option>
+              <option value="Assistant Professor">Assistant Professor</option>
+              <option value="Junior Associate">Junior Associate</option>
+              <option value="Senior Associate">Senior Associate</option>
+              <option value="Professor">Professor</option>
+              <option value="HOD">HOD</option>
+            </select>
+          </div>
+        
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div> 
+      </form>
+
+</body>
+ 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</html>
