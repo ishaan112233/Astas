@@ -27,6 +27,11 @@ const gracefulShutdown = (msg, callback) => {
 
 const FacultySchema = new Schema({
 
+    Femail:{
+        type: String,
+        unique: true,
+        required: true
+    },
     Fid:{
         type:String,
         unique:true,

@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const sendTimetables = mongoose.model('sendTimetables');
 const facultyAdd = mongoose.model('addFaculty');
 const teacherFind = mongoose.model('teacher');
+const hodFind = mongoose.model('hod');
+// const mailer =  require('../models/mail');
 /* GET home page */
 const index = function(req, res){
   res.render('index', { title: 'Routed through Controller main.js' });
@@ -64,6 +66,7 @@ const sendtimetable = function(req, res)
 const facultiesList = (req,res) =>{
   let faculty = [];
   const faculties = {
+    Femail: req.body.mail,
     Fid:req.body.Fid,
     Fname:req.body.Fname,
     Fsubject:req.body.Fsubject,
@@ -84,10 +87,35 @@ const facultiesList = (req,res) =>{
       }
     });
 };
+const hod = function(req,res){
+ hodFind.findOne({
+    hodmail: req.body.hod
+  },(err,hodFind) =>{
+    if(!hodFind){
+      res
+        .status(400)
+        .send(err);
+    }
+    else{
+      console.log("FOUND");
+        facultyAdd.findOne({
+          Femail: req.body.hod
+        },(err,facultyAdd)=>{
+          if(!facultyAdd){
+            res
+            .status(400)
+            .send(err);
+          }
+          else{
+            res
+              .status(201)
+              .render('HOD',{data:facultyAdd})
+          }
+        });
+        }
+  });
+};
 const teacher = function(req,res){
-  const teacher = {
-    teachermail: req.body.teachermail
-  }
   teacherFind.findOne({
     teachermail: req.body.teacher
   },(err,teacherFind) =>{
@@ -97,11 +125,21 @@ const teacher = function(req,res){
         .send(err);
     }
     else{
-//      console.log('Found');
-      res
-        .status(201)
-        .render('teacher');
-    }
+        facultyAdd.findOne({
+          Femail: req.body.teacher
+        },(err,facultyAdd)=>{
+          if(!facultyAdd){
+            res
+            .status(400)
+            .send(err);
+          }
+          else{
+            res
+              .status(201)
+              .render('teacher',{data:facultyAdd})
+          }
+        });
+        }
   });
 };
 
@@ -131,5 +169,6 @@ module.exports = {
   sendtimetable,
   facultiesList,
   findAll,
-  teacher
+  teacher,
+  hod
 };

@@ -29,13 +29,16 @@
 
     <h3 class="text-center">Add Faculty Here</h3><br> 
       
-    <form style="width:60%;padding:5%;border:1px solid #e8e8e8;height:500px; margin-left:4%;" method="POST" action="/moderator" >
+    <form style="width:60%;padding:5%;border:1px solid #e8e8e8;height:500px; margin-left:4%;" method="POST" action="/moderator" onsubmit="return checkEmail()">
        <div style="margin-top:-8%;"> 
           <div class="form-group col-md-8">
             <label for="Id"><b>Id</b></label>
             <input type="text" class="form-control" name="Fid" required placeholder="Faculty's Id">
           </div>
-        
+          <div class="form-group col-md-8">
+              <label for="Id"><b>Email</b></label>
+              <input type="email" class="form-control" id="email" name="mail" required placeholder="Faculty's Email">
+            </div>
         <div class="form-group col-md-8">
           <label for="tname"><b>Name:</b></label>
           <input type="text" class="form-control" name="Fname" required  placeholder="Faculty's name">
@@ -47,7 +50,7 @@
     
           <div class="form-group col-md-8">
             <label for="contact"><b>Contact No.</b></label>
-            <input type="number" class="form-control" placeholder="Mobile number" required name="Fcontact">
+            <input type="number" class="form-control" placeholder="Mobile number" required name="Fcontact" maxlength="10" minlength="10" pattern=" /^\d{10}$/">
           </div>
           <div class="form-group col-md-8">
             <label for="position"><b>Position</b></label>
@@ -71,5 +74,15 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+<script>
+function checkEmail() {
+  var email = document.getElementById('email');
+  var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!filter.match(email.value)) {
+      alert('Please provide a valid email address');
+      email.focus;
+      return false;
+  }
+}
+</script>
 </html>

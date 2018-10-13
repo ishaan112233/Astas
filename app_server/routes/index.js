@@ -14,14 +14,14 @@ router.get('/stu_timetable',function(req,res,next){
     res.render('timetable');
     // next();
 });
-router.post('/teacher_page',ctrlmain.teacher)
+router.post('/teacher_page',ctrlmain.teacher);
     // res.render('teacher');
     // next();
 // });
-router.get('/HOD',function(req,res,next){
-    res.render('HOD');
+router.post('/HOD',ctrlmain.hod);
+    // res.render('HOD');
     // next();
-});
+// });
 router.get('/make-timetable',function(req,res,next){
     res.render('timetable');
     // next();

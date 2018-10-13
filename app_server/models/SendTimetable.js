@@ -39,7 +39,9 @@ const teacherschema = new Schema({
     }
 });
 const hodschema = new Schema({
-   hodmail: String
+   hodmail:{
+       type: String
+   }
 });
 
 mongoose.model('teacher',teacherschema);
