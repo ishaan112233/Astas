@@ -88,16 +88,7 @@ const facultiesList = (req,res) =>{
     });
 };
 const hod = function(req,res){
- hodFind.findOne({
-    hodmail: req.body.hod
-  },(err,hodFind) =>{
-    if(!hodFind){
-      res
-        .status(400)
-        .send(err);
-    }
-    else{
-      console.log("FOUND");
+      // console.log("FOUND");
         facultyAdd.findOne({
           Femail: req.body.hod
         },(err,facultyAdd)=>{
@@ -111,20 +102,9 @@ const hod = function(req,res){
               .status(201)
               .render('HOD',{data:facultyAdd})
           }
-        });
-        }
   });
 };
 const teacher = function(req,res){
-  teacherFind.findOne({
-    teachermail: req.body.teacher
-  },(err,teacherFind) =>{
-    if(!teacherFind){
-      res
-        .status(400)
-        .send(err);
-    }
-    else{
         facultyAdd.findOne({
           Femail: req.body.teacher
         },(err,facultyAdd)=>{
@@ -138,8 +118,6 @@ const teacher = function(req,res){
               .status(201)
               .render('teacher',{data:facultyAdd})
           }
-        });
-        }
   });
 };
 
