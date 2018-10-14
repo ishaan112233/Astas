@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const ctrlmain = require('../controllers/main');
+const methodOverride = require('method-override');
+
+router.use(methodOverride('_method'))
 
 router.get('/',function(req,res,next){
     res.render('index');
@@ -40,9 +43,19 @@ router.post('/notice-data',(req,res,next)=>{
    res.send('ok');
 })
 router.post('/showtimetable', ctrlmain.sendtimetable);
+
 router.get('/moderator',(req,res)=>{
      res.render('moderator');
 })
-router.post('/moderator',ctrlmain.facultiesList)
-router.get('/list-of-faculties',ctrlmain.findAll);
+
+router.get('/list-of-faculties',ctrlmain.showAllFaculties);
+
+router.post('/list-of-faculties',ctrlmain.facultiesList)
+
+router.get('/list-of-faculties/edit/:id',ctrlmain.editFaculties);
+
+router.put('/list-of-faculties/:id',ctrlmain.updateFaculties)
+
+router.delete('/list-of-faculties/:id',ctrlmain.removeFaculties);
+
 module.exports = router;

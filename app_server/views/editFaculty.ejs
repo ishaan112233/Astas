@@ -25,33 +25,33 @@
               </nav>
 
 
-    <h3 class="text-center">Add Faculty Here</h3><br> 
-      
-    <form style="width:60%;padding:5%;border:1px solid #e8e8e8;height:600px; margin-left:4%;" method="POST" action="/list-of-faculties" >
-       <div style="margin-top:-8%;"> 
-          <div class="form-group col-md-8">
-            <label for="Id"><b>Id</b></label>
-            <input type="text" class="form-control" name="Fid" required placeholder="Faculty's Id">
+    <h3 class="text-center">Edit Faculty Here</h3>
+    <form style="width:60%;padding:5%;border:1px solid #e8e8e8;height:530px; margin-left:4%;" method="POST" action="/list-of-faculties/<%= faculty.id %>?_method=PUT" > 
+       <div style="margin-top:-6%"> 
+          <input type="hidden" name="_method" value="PUT">
+          <div class=" col-md-8">
+            <label for="Id"><b>Id:</b></label>
+            <input type="text" class="form-control" name="Fid" required  value="<%= faculty.Fid  %>">
           </div>
-          <div class="form-group col-md-8">
-              <label for="Id"><b>Email</b></label>
-              <input type="email" class="form-control" id="email" name="mail" required placeholder="Faculty's Email">
+          <div class=" col-md-8">
+              <label for="Id"><b>Email:</b></label>
+              <input type="email" class="form-control" id="email" name="mail" required value="<%= faculty.Femail   %>">
             </div>
-        <div class="form-group col-md-8">
+        <div class=" col-md-8">
           <label for="tname"><b>Name:</b></label>
-          <input type="text" class="form-control" name="Fname" required  placeholder="Faculty's name">
+          <input type="text" class="form-control" name="Fname" required  value="<%= faculty.Fname    %>">
         </div>
-        <div class="form-group col-md-8">
-          <label for="tsubject"><b>Subject</b></label>
-          <input type="text" class="form-control" name="Fsubject"  placeholder="Enter Teaching subject">
+        <div class=" col-md-8">
+          <label for="tsubject"><b>Subject:</b></label>
+          <input type="text" class="form-control" name="Fsubject" value="<%=  faculty.Fsubject   %>">
         </div>
     
-          <div class="form-group col-md-8">
-            <label for="contact"><b>Contact No.</b></label>
-            <input type="number" class="form-control" placeholder="Mobile number" required name="Fcontact" maxlength="10" minlength="10" pattern=" /^\d{10}$/">
+          <div class=" col-md-8">
+            <label for="contact"><b>Contact No:</b></label>
+            <input type="number" class="form-control" value="<%= faculty.Fcontact   %>" required name="Fcontact" maxlength="10" minlength="10" pattern=" /^\d{10}$/">
           </div>
-          <div class="form-group col-md-8">
-            <label for="position"><b>Position</b></label>
+          <div class=" col-md-8">
+            <label for="position"><b>Position:</b></label>
             <select  class="form-control" name="Fposition">
               <option selected value="Lecturer">Lecturer</option>
               <option value="Junior Assistant">Junior Assistant</option>
@@ -62,10 +62,10 @@
               <option value="HOD">HOD</option>
             </select>
           </div>
-        <button type="submit" class="btn btn-primary w-25">Save</button>
+        <br>
+        <button type="submit" class="btn btn-primary w-50" style="margin-left:10%;">Save</button>
     </div> 
-      </form>
-
+  </form>
 </body>
  
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

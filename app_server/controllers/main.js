@@ -5,6 +5,8 @@ const teacherFind = mongoose.model('teacher');
 const hodFind = mongoose.model('hod');
 // const mailer =  require('../models/mail');
 /* GET home page */
+
+
 const index = function(req, res){
   res.render('index', { title: 'Routed through Controller main.js' });
 };
@@ -54,9 +56,6 @@ const sendtimetable = function(req, res)
             res.render("showtable",{
             data:makeTable
           });
-          
-            // .status(201)
-            // .json(senjsdTimetables);
         }
       });
     }
@@ -65,6 +64,7 @@ const sendtimetable = function(req, res)
 
 const facultiesList = (req,res) =>{
   let faculty = [];
+  let data = [];
   const faculties = {
     Femail: req.body.mail,
     Fid:req.body.Fid,
@@ -73,22 +73,64 @@ const facultiesList = (req,res) =>{
     Fcontact:req.body.Fcontact,
     Fposition:req.body.Fposition
 } 
-  facultyAdd.create(faculties,
-    (err,facultyAdd)=>{
-      if(err){
-        res
-          .status(404)
-          .json(err)
-      }
-      else{
-        res
-          .status(201)
-          .render('moderator')
-      }
-    });
+  
+    new facultyAdd(faculties)
+        .save()
+        .then(e=>{
+          res.redirect('/list-of-faculties')
+        })
+     
 };
+
+const showAllFaculties = (req,res) =>{
+     facultyAdd.find({})
+     .sort()
+     .then(staff => {
+      res.render('listoffaculties',{
+           staff: staff        
+      })
+     })
+}
+
+const editFaculties = (req,res) =>{
+  facultyAdd.findOne({
+    _id: req.params.id
+  })
+  .then(faculty =>{
+    res.render('editFaculty',{
+      faculty:faculty
+    })
+  })
+}
+
+const updateFaculties = (req,res) =>{
+   facultyAdd.findOne({
+     _id:req.params.id
+   })
+   .then(faculty => {
+    faculty.Femail= req.body.mail;
+    faculty.Fid=req.body.Fid;
+    faculty. Fname=req.body.Fname;
+    faculty.Fsubject=req.body.Fsubject;
+    faculty.Fcontact=req.body.Fcontact;
+    faculty.Fposition=req.body.Fposition;
+
+    faculty.save()
+           .then(faculty => {
+             res.redirect('/list-of-faculties')
+           })
+
+   })
+}
+
+const removeFaculties = (req,res) => {
+  facultyAdd.remove({_id:req.params.id})
+             .then(()=>{
+               res.redirect('/list-of-faculties')
+             })
+}
+
 const hod = function(req,res){
-      // console.log("FOUND");
         facultyAdd.findOne({
           Femail: req.body.hod
         },(err,facultyAdd)=>{
@@ -121,32 +163,15 @@ const teacher = function(req,res){
   });
 };
 
-const findAll = (req,res)=>{
-  facultyAdd.find({
-    Fid:req.body.Fid,
-    Fname:req.body.Fname,
-    Fsubject:req.body.Fsubject,
-    Fcontact:req.body.Fcontact,
-    Fposition:req.body.Fposition
-  }) ,
-  (err,facultyAdd)=>{
-    if(err){
-      res
-        .status(404)
-        .json(err)
-    }
-    else{
-      res
-        .status(201)
-        .render('listoffaculities');
-    }
-  };
-};
+
 module.exports = {
   index,
   sendtimetable,
   facultiesList,
-  findAll,
+  showAllFaculties,
+  editFaculties,
+  updateFaculties,
+  removeFaculties,
   teacher,
   hod
 };
