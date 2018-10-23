@@ -18,6 +18,7 @@
                   <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="/moderator">Add Faculty <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="/list-of-faculties">Faculties</a>
+                    <a class="nav-item nav-link" href="/upload-list" >Upload</a>
                     <!-- <a class="nav-item nav-link" href="#">Pricing</a> -->
 
                   </div>
@@ -27,7 +28,7 @@
 
     <h3 class="text-center">Add Faculty Here</h3><br> 
       
-    <form style="width:60%;padding:5%;border:1px solid #e8e8e8;height:600px; margin-left:4%;" method="POST" action="/list-of-faculties" >
+    <form style="width:60%;padding:5%;border:1px solid #e8e8e8;height:80%; margin-left:4%;" method="POST" action="/list-of-faculties" >
        <div style="margin-top:-8%;"> 
           <div class="form-group col-md-8">
             <label for="Id"><b>Id</b></label>
@@ -45,10 +46,33 @@
           <label for="tsubject"><b>Subject</b></label>
           <input type="text" class="form-control" name="Fsubject"  placeholder="Enter Teaching subject">
         </div>
-    
-          <div class="form-group col-md-8">
+         <div class="form-group col-md-8">
             <label for="contact"><b>Contact No.</b></label>
             <input type="number" class="form-control" placeholder="Mobile number" required name="Fcontact" maxlength="10" minlength="10" pattern=" /^\d{10}$/">
+          </div>
+          <div class="form-group col-md-8">
+            <label for="lectures"><b>Lectures:</b></label>
+            <input type="number" class="form-control" name="Flectures"  placeholder="Enter Teaching lectures">
+          </div>
+          <div class="form-group col-md-8">
+            <label for="class"><b>Class:</b></label>
+            <input type="text" class="form-control" name="Fclass"  placeholder="Enter Teaching Class">
+          </div>
+          <div class="form-group col-md-8">
+            <label for="year"><b>Year:</b></label>
+            <input type="number" class="form-control" name="Fyear"  placeholder="Enter Teaching Year">
+          </div> 
+          <div class="form-group col-md-8">
+            <label for="previous-subject"><b>Previous Taught Subject:</b></label>
+            <input type="text" class="form-control" name="Fpsubject"  placeholder="Enter previous Teaching subjects">
+          </div>
+          <div class="form-group col-md-8">
+            <label for="pyear"><b>Previous Year:</b></label>
+            <input type="number" class="form-control" name="Fpyear"  placeholder="Enter previous Teaching Year">
+          </div> 
+          <div class="form-group col-md-8">
+            <label for="psection"><b>Previous Taught Sections:</b></label>
+            <input type="text" class="form-control" name="Fpclass"  placeholder="Enter previous Classes">
           </div>
           <div class="form-group col-md-8">
             <label for="position"><b>Position</b></label>

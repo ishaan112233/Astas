@@ -18,6 +18,7 @@
                   <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="/moderator">Add Faculty <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="/list-of-faculties">Faculties</a>
+                    <a class="nav-item nav-link" href="/upload-list" >Upload</a>
                     <!-- <a class="nav-item nav-link" href="#">Pricing</a> -->
 
                   </div>
@@ -40,16 +41,39 @@
         </div>
       </div>
         <div class="row">
-         <div class="col md-4"> 
+         <div class="col md-3"> 
           <p class="card-text"><b>Contact:</b><%= members.Fcontact   %></p>
          </div>
-         <div class="col md-4"> 
+         <div class="col md-3"> 
           <p class="card-text"><b>Email:</b><%= members.Femail   %></p>
          </div>
-         <div class="col md-4">
-          <p class="card-text"><b>Position:</b><%= members.Fposition   %></p>
+         <div class="col md-3"> 
+          <p class="card-text"><b>Class:</b><%= members.Fclass   %></p>
+         </div>
+         <div class="col md-3"> 
+          <p class="card-text"><b>Year:</b><%= members.Fyear   %></p>
+         </div>
+        </div><br>
+        <div class="row" style="float:right;">
+         <div class="col md-3"> 
+          <p class="card-text"><b>Previous Subjects:</b><%= members.Fpsubject   %></p>
+         </div>
+         <div class="col md-3"> 
+          <p class="card-text"><b>Calender Year:</b><%= members.Fpyear   %></p>
+         </div>
+         <div class="col md-3">
+          <p class="card-text"><b>Previous Section:</b><%= members.Fpclass   %></p>
          </div>  
         </div><br>
+        <div class="row mt-5 ml-5" style="float:right;">
+          <div class="col md-6">
+            <p class="card-text"><b>Weekly Lectures:</b><%= members.Flectures    %></p>
+           </div>
+           <div class="col md-6">
+            <p class="card-text"><b>Position:</b><%= members.Fposition   %></p>
+           </div>
+        </div>
+        <br>
         <a href="/list-of-faculties/edit/<%= members._id %>" class="btn btn-info w-25">Edit</a>   
         <form action="/list-of-faculties/<%= members.id %>?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE"><br>

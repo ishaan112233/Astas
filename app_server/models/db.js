@@ -47,5 +47,5 @@ process.on('SIGTERM', () => {
 
 require('./SendTimetable');
 require('./FacultyAdd');
-
+require('./uploadedFaculty');
 

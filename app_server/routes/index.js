@@ -25,10 +25,7 @@ router.post('/HOD',ctrlmain.hod);
     // res.render('HOD');
     // next();
 // });
-router.get('/make-timetable',function(req,res,next){
-    res.render('timetable');
-    // next();
-});
+router.get('/make-timetable',ctrlmain.timeTable);
 
 router.get('/request',function(req,res,next){
     res.render('Request');
@@ -57,5 +54,13 @@ router.get('/list-of-faculties/edit/:id',ctrlmain.editFaculties);
 router.put('/list-of-faculties/:id',ctrlmain.updateFaculties)
 
 router.delete('/list-of-faculties/:id',ctrlmain.removeFaculties);
+
+router.get('/upload-list',ctrlmain.uploadFiles)
+
+router.post('/upload/list',ctrlmain.showFilesData)
+
+router.post('/venues-list',ctrlmain.venueList)
+
+router.get('/venues-list',ctrlmain.showAllVenues)
 
 module.exports = router;
