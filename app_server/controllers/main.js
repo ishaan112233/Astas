@@ -44,8 +44,10 @@ const upload1 = multer({
   }
 }).single('file1');
 
+//  For uploading sections requirements file
 
 // For uploading requirements of each section
+
 
 const upload2 = multer({
   storage: storage,
@@ -411,6 +413,93 @@ const showAllVenues = (req,res)=>{
                       })
 }
 
+const sectionsList = (req,res) => {
+  let exceltojson;
+  let uploadedData = [];
+    upload2(req,res,(err)=>{
+      if(err){
+        res.render('venuesList',{
+          msg1:err
+        })
+      }
+      else{
+        if(req.file.originalname.split('.')
+        [req.file.originalname.split('.').length-1]==='xlsx'){
+          exceltojson = xlsxtojson
+        }
+        else{
+          exceltojson = xlstojson;
+        }
+       
+        try{
+          exceltojson({
+            input: req.file.path,
+            output: null,
+            lowerCaseHeaders:true
+          },(err,result)=>{
+            if(err){
+              res.send(err)
+              return;
+            }
+            
+          result.forEach(rest => {
+             section.create({
+              Section:rest.section,
+              Stream:rest.stream,
+              Students:rest.students,
+              Year:rest.year,
+              Faculty:rest.faculty.split(","),
+              Subjects:rest.subjects.split(","),
+              food:rest.food,
+              block:rest.block,
+              venue:rest.venue,
+              type:rest.type,
+              floor:rest.floor,
+              projector:rest.projector,
+              podium:rest.podium,
+              lanports:rest.lanports,
+              powerports:rest.powerports,
+              ac:rest.ac,
+              whiteboard:rest.whiteboard,
+              roundtable:rest.roundtable,
+              flexlayout:rest.flexlayout,
+              av:rest.av,
+              classtype:rest.classtype,
+              nearparking:rest.nearparking,
+              nearwashroom:rest.nearwashroom,
+              nearlift:rest.nearlift  
+             })
+           })
+//         console.log(uploadedVenues.food)
+  //          res.render('venuesList',{
+    //          uploadedData:result
+      //      })
+          })  
+        }
+        catch(e){
+          res.send('Corrupted Excel file')
+        }
+      }
+    }) 
+
+  
+}
+
+
+
+const beforeTimetableForm = (req,res) => {
+  res.render('timetableform')
+}
+
+const showSectionData = (req,res)=>{
+      section.find({
+        Stream:req.stream,
+        Section:req.section,
+        Year:req.year
+      })
+      console.log(req.body)
+}
+
 
 const showSectionRequirements = (req,res) => {
 
@@ -524,7 +613,13 @@ module.exports = {
   showFilesData,
   venueList,
   showAllVenues,
+
+  sectionsList,
+  beforeTimetableForm,
+  showSectionData
+
   showSectionRequirements,
   showListOfRequirements,
   formBeforeTimetable
+
 };

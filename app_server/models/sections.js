@@ -1,3 +1,20 @@
+
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+// Schema for sections
+
+const sectionsSchema = new Schema({
+    Section:{
+        type:String
+    },
+    Stream:{
+        type:String
+    },
+    Students:{
+        type:String
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -7,10 +24,18 @@ const Schema = mongoose.Schema;
 const sectionsSchema = new Schema({
     Stream:{
        type:String 
+
     },
     Year:{
         type:Number
     },
+
+    Faculty:[{
+        type:String
+    }],
+    Subjects:[{
+        type:String
+
     Section:{
         type: String,
     },
@@ -22,11 +47,44 @@ const sectionsSchema = new Schema({
     }],
     Subjects:[{
         type: String,
+
     }],
     food:{
         type: String,
     },
     block:{
+
+        type: String,
+    },
+    venue:{
+        type:String,
+    },
+    type:{
+        type:String,
+    },
+    floor:{
+        type:String,
+        
+    },
+    projector:{
+        type:String,
+        
+    },
+    podium:{
+        type:String,
+        
+    },
+    lanports:{
+        type:String,
+        
+    },
+    powerports:{
+        type:String,
+        
+    },
+    ac:{
+        type:String,
+
         type: String, 
     },
     venue:{
@@ -54,6 +112,7 @@ const sectionsSchema = new Schema({
     },
     ac:{
         type:String,
+
     },
     whiteboard:{
         type:String,
@@ -94,4 +153,9 @@ const sectionsSchema = new Schema({
 })
 
 
+
+
+mongoose.model('section',sectionsSchema)
+
 mongoose.model('section',sectionsSchema);
+
