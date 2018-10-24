@@ -7,7 +7,6 @@ const Schema = mongoose.Schema;
 const UploadedVenueSchema = new Schema({
     food:{
         type: String,
-        
     },
     block:{
         type: String,
@@ -47,7 +46,6 @@ const UploadedVenueSchema = new Schema({
     },
     ac:{
         type:String,
-        
     },
     whiteboard:{
         type:String,
