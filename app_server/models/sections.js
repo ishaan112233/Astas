@@ -1,16 +1,33 @@
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//  Schema of Uploaded file
 
-const UploadedVenueSchema = new Schema({
+//Schema of requirements of each section
+
+const sectionsSchema = new Schema({
+    Stream:{
+       type:String 
+    },
+    Year:{
+        type:Number
+    },
+    Section:{
+        type: String,
+    },
+    Students:{
+        type: String,
+    },
+    Faculty:[{
+        type: String,
+    }],
+    Subjects:[{
+        type: String,
+    }],
     food:{
         type: String,
     },
     block:{
-        type: String,
-        
+        type: String, 
     },
     venue:{
         type:String,
@@ -22,27 +39,18 @@ const UploadedVenueSchema = new Schema({
     },
     floor:{
         type:String,
-        
-    },
-    venuecapacity:{
-        type:String,
-        
     },
     projector:{
-        type:String,
-        
+        type:String,  
     },
     podium:{
         type:String,
-        
     },
     lanports:{
         type:String,
-        
     },
     powerports:{
         type:String,
-        
     },
     ac:{
         type:String,
@@ -83,6 +91,7 @@ const UploadedVenueSchema = new Schema({
         type:String,
         
     }
-});
+})
 
-mongoose.model("venues",UploadedVenueSchema);
+
+mongoose.model('section',sectionsSchema);

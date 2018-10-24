@@ -4,6 +4,7 @@ const facultyAdd = mongoose.model('addFaculty');
 const teacherFind = mongoose.model('teacher');
 const hodFind = mongoose.model('hod');
 const uploadedVenues = mongoose.model('venues') ;
+const section = mongoose.model('section');
 const multer = require('multer');
 const path = require('path');
 const exceltojson = require("xls-to-json-lc");
@@ -42,6 +43,21 @@ const upload1 = multer({
     
   }
 }).single('file1');
+
+
+// For uploading requirements of each section
+
+const upload2 = multer({
+  storage: storage,
+  fileFilter: (req,file,cb)=>{
+    if(file.mimetype==="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"){
+      return cb(null,true)
+    }
+    console.log(file.mimetype)
+      cb('Error: Excel files Only')
+    
+  }
+}).single('file2');
 
 
 
@@ -364,7 +380,13 @@ const venueList = (req,res) => {
               nearparking:rest.nearparking,
               nearwashroom:rest.nearwashroom,
               nearlift:rest.nearlift  
-             })
+             },
+             (err,rec)=>{
+              if(err){
+                console.log(err)
+                return;
+              }
+            })
            })
 //         console.log(uploadedVenues.food)
   //          res.render('venuesList',{
@@ -390,6 +412,102 @@ const showAllVenues = (req,res)=>{
 }
 
 
+const showSectionRequirements = (req,res) => {
+
+  let exceltojson;
+  let uploadedData = [];
+    upload2(req,res,(err)=>{
+      if(err){
+        res.render('venuesList',{
+          msg1:err
+        })
+      }
+      else{
+        if(req.file.originalname.split('.')
+        [req.file.originalname.split('.').length-1]==='xlsx'){
+          exceltojson = xlsxtojson
+        }
+        else{
+          exceltojson = xlstojson;
+        }
+       
+        try{
+          exceltojson({
+            input: req.file.path,
+            output: null,
+            lowerCaseHeaders:true
+          },(err,result)=>{
+            if(err){
+              res.send(err)
+              return;
+            }
+            
+          result.forEach(rest => {
+             section.create({
+              Stream:rest.stream,
+              Year: rest.year,
+              Section:rest.section,
+              Students:rest.students,
+              Faculty:rest.faculty.split(","),
+              Subjects:rest.subjects.split(","), 
+              food:rest.food,
+              block:rest.block,
+              venue:rest.venue,
+              type:rest.type,
+              floor:rest.floor,
+              projector:rest.projector,
+              podium:rest.podium,
+              lanports:rest.lanports,
+              powerports:rest.powerports,
+              ac:rest.ac,
+              whiteboard:rest.whiteboard,
+              roundtable:rest.roundtable,
+              flexlayout:rest.flexlayout,
+              av:rest.av,
+              classtype:rest.classtype,
+              nearparking:rest.nearparking,
+              nearwashroom:rest.nearwashroom,
+              nearlift:rest.nearlift  
+             },
+             (err,rec)=>{
+              if(err){
+                console.log(err)
+                return;
+              }
+            })
+           })
+//         console.log(uploadedVenues.food)
+  //          res.render('venuesList',{
+    //          uploadedData:result
+      //      })
+          })  
+        }
+        catch(e){
+          res.send('Corrupted Excel file')
+        }
+      }
+    }) 
+
+    
+}
+
+const showListOfRequirements = (req,res) => {
+  res.render('sectionsList')
+       section.find({})
+              .sort()
+              .then((list) => {
+                  list:list
+              },
+              )
+              res.redirect('/section-requirements/list')
+}
+
+
+const formBeforeTimetable = (req,res) => {
+  res.render('beforeTimetable')
+}
+
+
 module.exports = {
   index,
   timeTable,
@@ -405,5 +523,8 @@ module.exports = {
   uploadFiles,
   showFilesData,
   venueList,
-  showAllVenues
+  showAllVenues,
+  showSectionRequirements,
+  showListOfRequirements,
+  formBeforeTimetable
 };

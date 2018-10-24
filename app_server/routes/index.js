@@ -17,6 +17,10 @@ router.get('/stu_timetable',function(req,res,next){
     res.render('timetable');
     // next();
 });
+
+router.get('/before-timetable',ctrlmain.formBeforeTimetable);
+
+
 router.post('/teacher_page',ctrlmain.teacher);
     // res.render('teacher');
     // next();
@@ -62,5 +66,10 @@ router.post('/upload/list',ctrlmain.showFilesData)
 router.post('/venues-list',ctrlmain.venueList)
 
 router.get('/venues-list',ctrlmain.showAllVenues)
+
+router.post('/section-requirements',ctrlmain.showSectionRequirements);
+
+router.get('/section-requirements/list',ctrlmain.showListOfRequirements);
+
 
 module.exports = router;
