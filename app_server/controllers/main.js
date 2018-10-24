@@ -9,12 +9,11 @@ const multer = require('multer');
 const path = require('path');
 const exceltojson = require("xls-to-json-lc");
 const xlsxtojson = require("xlsx-to-json-lc");
-
-
-//'mongodb://astas:astas123@ds121753.mlab.com:21753/astas'
-
+const SendOtp = require('sendotp');
+const sendOtp = new SendOtp('244087AEm1pdREMM5bced951',"Hi, your OTP is {{otp}}, please don't share it with ANYBODY!");
+sendOtp.setOtpExpiry('1');
 const storage = multer.diskStorage({
-  destination: '/home/hardik/Documents/Astas/public/uploaded-files',
+  destination: '../../public/uploaded-files',
   filename: (req,file,cb) => {
       cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname) )
   }
@@ -111,7 +110,8 @@ const sendtimetable = function(req, res)
           Year: req.body.Year,
           Day:req.body.Day,
           Subject: req.body.Subject,
-          Venue: req.body.Venue  
+          Venue: req.body.Venue,  
+          id: req.body.section
         }
       
         sendTimetables.create(
@@ -122,7 +122,7 @@ const sendtimetable = function(req, res)
             .status(400)
             .json(err);
         } else { 
-            res.render("showtable",{
+            res.render('showtable',{
             data:makeTable
           });
         }
@@ -213,45 +213,45 @@ const updateFaculties = (req,res) =>{
    })
 }
 
-const removeFaculties = (req,res) => {
-  facultyAdd.remove({_id:req.params.id})
-             .then(()=>{
-               res.redirect('/list-of-faculties')
-             })
-}
+// const removeFaculties = (req,res) => {
+//   facultyAdd.remove({_id:req.params.id})
+//              .then(()=>{
+//                res.redirect('/list-of-faculties')
+//              })
+// }
 
-const hod = function(req,res){
-        facultyAdd.findOne({
-          Femail: req.body.hod
-        },(err,facultyAdd)=>{
-          if(!facultyAdd){
-            res
-            .status(400)
-            .send(err);
-          }
-          else{
-            res
-              .status(201)
-              .render('HOD',{data:facultyAdd})
-          }
-  });
-};
-const teacher = function(req,res){
-        facultyAdd.findOne({
-          Femail: req.body.teacher
-        },(err,facultyAdd)=>{
-          if(!facultyAdd){
-            res
-            .status(400)
-            .send(err);
-          }
-          else{
-            res
-              .status(201)
-              .render('teacher',{data:facultyAdd})
-          }
-  });
-};
+// const hod = function(req,res){
+//         facultyAdd.findOne({
+//           Femail: req.body.hod
+//         },(err,facultyAdd)=>{
+//           if(!facultyAdd){
+//             res
+//             .status(400)
+//             .send(err);
+//           }
+//           else{
+//             res
+//               .status(201)
+//               .render('HOD',{data:facultyAdd})
+//           }
+//   });
+// };
+// const teacher = function(req,res){
+//         facultyAdd.findOne({
+//           Femail: req.body.teacher
+//         },(err,facultyAdd)=>{
+//           if(!facultyAdd){
+//             res
+//             .status(400)
+//             .send(err);
+//           }
+//           else{
+//             res
+//               .status(201)
+//               .render('teacher',{data:facultyAdd})
+//           }
+//   });
+// };
 
 
 const uploadFiles = (req,res) =>{
@@ -595,8 +595,172 @@ const showListOfRequirements = (req,res) => {
 const formBeforeTimetable = (req,res) => {
   res.render('beforeTimetable')
 }
+const findtimetable = (req,res)=>{
+  // console.log(req.params.id);
+  sendTimetables.findOne({
+    id: req.params.id
+  },(err,sendTimetables)=>{
+    data = sendTimetables;
+    // console.log(data);
+      if(!data){
+        res
+        .status(404)
+        .render('error');
+      }
+      else{
+        res
+        .status(201)
+        .render('showtable',{data});
+      }
+  })
+}
+const removeFaculties = (req,res) => {
+  facultyAdd.remove({_id:req.params.id})
+             .then(()=>{
+               res.redirect('/list-of-faculties')
+             })
+}
+const otp = function(req,res){
+  facultyAdd.findOne({
+    Femail: req.body.teacher
+  },(err,facultyAdd)=>{
+    data = facultyAdd;
+    if(data.Fposition==='HOD'){
+      res
+      .status(404)
+      .redirect('error');
+    }
+    else{
+      if(!facultyAdd){
+        res
+        .status(404)
+        .redirect('error');
+      }
+      else{
+          const contactNumber = data.Fcontact;
+          const senderId = "KARUPS";
+          sendOtp.send(contactNumber, senderId, (err, data, response) => {
+          if(err) {
+            console.log(err);
+            return;
+          }
+          else{
+            res
+            .status(201)
+            .render('otp');
+          }
+        });
+      }
+    }
+  });
+};
 
-
+const verifyOtp = function(req,res){
+  // console.log(data.Fcontact);
+  var contactNumber = data.Fcontact;
+  const otp = req.body.otp;
+  sendOtp.verify(contactNumber, otp, (err, Vdata) => {
+    if(Vdata.type!='success') {
+      res
+      .status(404)
+      .redirect('error');
+    }
+    else{
+      // console.log(data.Fposition);
+      if(data.Fposition=='HOD'){
+      res
+        .status(200)
+        .render('HOD');
+      }
+      else{
+        res
+          .status(201)
+          .render('teacher');
+      }
+    }
+  });
+};
+const findtable = function(req,res){
+  sendTimetables.findOne({
+    // Stream: req.body.stream,
+    // section: req.body.section,
+    // Year: req.body.year,
+    id: req.body.section
+  },(err,sendTimetables)=>{
+    data = sendTimetables;
+    console.log(data.id);
+    if(!sendTimetables){
+      res
+      .status(404)
+      .render('error');
+    }
+    else{
+      res
+      .status(201)
+      .redirect('/showtimetable/'+data.section);
+    }
+  })
+};
+const search = function(req,res){
+  var staff=[];
+  // console.log(req.body.search);
+  facultyAdd.find({
+    Fsubject: req.body.search.toUpperCase()
+  },(err,facultyAdd)=>{
+    // facultyAdd.Fsubject.split
+    staff = facultyAdd;
+    // console.log(staff);
+    if(staff.length==0){
+      res
+      .status(404)
+      .render('error');
+    }
+    else{
+      res
+      .status(201)
+      .render('listoffaculties',{staff});
+    }
+  })
+}
+const otp1 = function(req,res){
+  // console.log(req.body.hodmail);
+  // console.log(req.params);
+  req.session.user = req.body.hodmail;
+  facultyAdd.findOne({
+    Femail: req.body.hodmail  
+  },(err,facultyAdd)=>{
+    data = facultyAdd;
+    // console.log(data.Fposition);
+    if(!facultyAdd){
+      res
+      .status(404)
+      .redirect('error');
+    }
+    if(data.Fposition!=='HOD'){
+      res
+      .status(404)
+      .redirect('error');
+    }
+    else if(req.session.user){
+    
+      // else{
+          const contactNumber = data.Fcontact;
+          const senderId = "KARUPS";
+          sendOtp.send(contactNumber, senderId, (err, data, response) => {
+          if(err) {
+            console.log(err);
+            return;
+          }
+          else{
+            res
+            .status(201)
+            .render('otp');
+          }
+        });
+      }
+    // }
+  });
+};
 module.exports = {
   index,
   timeTable,
@@ -607,19 +771,23 @@ module.exports = {
   updateFaculties,
   removeFaculties,
   showTeacher,
-  teacher,
-  hod,
+  // teacher,
+  // hod,
   uploadFiles,
   showFilesData,
   venueList,
   showAllVenues,
-
   sectionsList,
   beforeTimetableForm,
-  showSectionData
-
+  showSectionData,
   showSectionRequirements,
   showListOfRequirements,
-  formBeforeTimetable
-
+  formBeforeTimetable,
+  otp,
+  verifyOtp,
+  findtable,
+  otp1,
+  search,
+  findtimetable,
+  findtable
 };

@@ -17,15 +17,15 @@ router.get('/stu_timetable',function(req,res,next){
     res.render('timetable');
     // next();
 });
-
+router.post('/faculties',ctrlmain.verifyOtp);
 router.get('/before-timetable',ctrlmain.formBeforeTimetable);
 
 
-router.post('/teacher_page',ctrlmain.teacher);
+// router.post('/teacher_page',ctrlmain.teacher);
     // res.render('teacher');
     // next();
 // });
-router.post('/HOD',ctrlmain.hod);
+// router.post('/HOD',ctrlmain.hod);
     // res.render('HOD');
     // next();
 // });
@@ -44,11 +44,17 @@ router.post('/notice-data',(req,res,next)=>{
    res.send('ok');
 })
 router.post('/showtimetable', ctrlmain.sendtimetable);
-
+router.get('/showtimetable/:id', ctrlmain.findtimetable);
 router.get('/moderator',(req,res)=>{
      res.render('moderator');
-})
-
+});
+router.post('/otp',ctrlmain.otp);
+router.post('/otp1',ctrlmain.otp1);
+router.get('/logout',function(req,res){
+    res.redirect('/');
+    });
+router.post('/list-of-faculties/search',ctrlmain.search);
+router.post('/findtable',ctrlmain.findtable);
 router.get('/list-of-faculties',ctrlmain.showAllFaculties);
 
 router.post('/list-of-faculties',ctrlmain.facultiesList)

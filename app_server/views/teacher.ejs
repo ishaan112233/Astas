@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Welcome <%= data.Fname %></title>
+  <title>Welcome:- <%= data.Fname %></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
@@ -43,11 +43,12 @@
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav hidden-xs">
-      <h2><a href="/" style="text-decoration: none;" style="text-align:center;">Astas</a></h2>
+     <center> <h2><a href="/" style="text-decoration: none;" style="text-align:center;">Astas</a></h2></center>
       <ul class="nav nav-pills nav-stacked" style="text-align:center;">
         <li class="active"><a href="#section1">Dashboard</a></li>
         <li><a href="#section2">TimeTable</a></li>
-		<li><a href="/request">Request</a></li>
+        <li><a href="/request">Request</a></li>
+        <li><a href="/logout">LogOut</a></li>
       </ul><br>
     </div>
     <br>
@@ -60,27 +61,13 @@
         <p>Position: <%= data.Fposition%></p>
       </div>
       </div>
-	   <div class="progressDiv">
-            <div class="statChartHolder">
-                <div class="progress-pie-chart" data-percent="67">
-                    <div class="ppc-progress">
-                        <div class="ppc-progress-fill"></div>
-                    </div>
-                    <div class="ppc-percents">
-                    <div class="pcc-percents-wrapper">
-                        <span>%</span>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div class="statRightHolder">
-                <ul>
-                <li> <h3 class="blue">Number</h3> <span>Number Of Students(Currently Teaching)</span></li>
-                <li> <h3 class="purple">Avg</h3> <span>Avg Marks</span></li>
-                </ul>
-            </div>
-            
-        </div>
+      <div class="statRightHolder">
+          <ul>
+          <li> <h3 style="margin-top: 100px;">Further Notices</h3> <!--<span>Number Of Students(Currently Teaching)</span>--></li>
+          </ul>
+
+      </div>
+      
     </div>
   </div>
 </div>

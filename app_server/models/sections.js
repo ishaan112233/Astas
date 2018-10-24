@@ -1,24 +1,5 @@
-
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
-// Schema for sections
-
-const sectionsSchema = new Schema({
-    Section:{
-        type:String
-    },
-    Stream:{
-        type:String
-    },
-    Students:{
-        type:String
-
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-
 //Schema of requirements of each section
 
 const sectionsSchema = new Schema({
@@ -35,7 +16,7 @@ const sectionsSchema = new Schema({
     }],
     Subjects:[{
         type:String
-
+    }],
     Section:{
         type: String,
     },

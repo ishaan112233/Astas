@@ -1,0 +1,47 @@
+<html>
+    <title>OTP</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<div class="container be-detail-container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <br>
+            <img src="https://cdn2.iconfinder.com/data/icons/luchesa-part-3/128/SMS-512.png" class="img-responsive" style="width:200px; height:200px;margin:0 auto;"><br>
+            
+            <h1 class="text-center">Verify your mobile number</h1><br>
+            <p class="lead" style="align:center;"></p><p> Thanks for giving your details. An OTP has been sent to your Mobile Number. Please enter the 4 digit OTP below for Successful Registration</p>  <p></p>
+        <br>
+       
+            <form method="POST" id="veryfyotp" action="/faculties">
+                <div class="row">                    
+                <div class="form-group col-sm-8">
+                        <div id="some_div"></div>
+                	 <span style="color:red;"></span> <input type="text" class="form-control" name="otp" placeholder="Enter your OTP number" required="">
+                </div>
+                <input type="submit" class="btn btn-primary  pull-right col-sm-3" ><br><br>  <input type="submit" value="Retry" class="btn btn-primary  pull-right col-sm-3" onclick="location.reload()" ><br><br>
+                </div>
+            </form>
+        <br><br>
+        </div>
+    </div>        
+</div>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+var timeLeft = 60;
+var elem = document.getElementById('some_div');
+var timerId = setInterval(countdown, 1000);
+function countdown() {
+    if (timeLeft == -1) {
+        clearTimeout(timerId);
+        doSomething();
+    } else {
+        elem.innerHTML = timeLeft + ' seconds remaining';
+        timeLeft--;
+    }
+}
+function doSomething() {
+    alert("Exiting");
+    location.href="/";
+}
+</script>
+</html>

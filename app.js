@@ -3,6 +3,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
@@ -15,7 +16,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'ejs');
 
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -36,7 +37,32 @@ app.get('/Faculty_login', (req,res,next)=>{
 
 //app.use('/notice-upload',noticeUpload);
 
-
+app.use(function(req, res, next) {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+app.use((req, res, next) => {
+  if (req.cookies.user_sid && !req.session.user) {
+      res.clearCookie('user_sid');        
+  }
+  next();
+});
+var sessionChecker = (req, res, next) => {
+  if (req.session.user && req.cookies.user_sid) {
+      res.redirect('/faculty');
+  } else {
+      next();
+  }    
+};
+app.get('/logout', (req, res) => {
+  if (req.session.user && req.cookies.user_sid) {
+      res.clearCookie('user_sid');
+      res.redirect('/');
+  } else {
+      res.redirect('/faculty');
+  }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

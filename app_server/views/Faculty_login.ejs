@@ -22,9 +22,9 @@
       <span style="display:inline-block; width: 590px;"></span>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="/" class="nav-link">Students</a></li>
-          <li class="nav-item"><a href="/faculty" class="nav-link">Faculty</a></li>
-          <li class="nav-item"><a href="/make-timetable" class="nav-link">Make Time-table</a></li>
+          <li class="nav-item active"><a href="/" class="nav-link" style="font-weight: bold;font-style: italic;">Students</a></li>
+          <li class="nav-item"><a href="/faculty" class="nav-link" style="font-weight: bold;font-style: italic;">Faculty</a></li>
+          <li class="nav-item"><a href="/make-timetable" class="nav-link" style="font-weight: bold;font-style: italic;">Make Time-table</a></li>
         </ul>
       </div>
     </div>
@@ -35,7 +35,7 @@
         
         <div class="cont_login" >
       <div class="cont_info_log_sign_up">
-      <div class="cont_info_log_sign_up" style="">
+      <div class="cont_info_log_sign_up">
             <div class="col_md_login" >
       <div class="cont_ba_opcitiy" style="background-image: linear-gradient(to right top, #161615, #272625, #383737, #494949, #5c5c5c);">
               
@@ -57,18 +57,18 @@
           
           
       <div class="cont_forms" id="form-faculty">
-       <form class="cont_form_login" method="POST" action="/teacher_page">
+       <form class="cont_form_login" method="POST" action="/otp">
           <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
          <h2>LOGIN</h2>
        <input type="email" placeholder="Email" name="teacher" class="txtEmail" required/>
       <!-- <input type="password" placeholder="Password" id="password_teacher" minlength="8" maxlength="15" required/> -->
       <button type="submit" class="btn_login" id="submit">TEACHER</button>
        </form>
-        <form class="cont_form_sign_up"  method="POST" action="/HOD">
+        <form class="cont_form_sign_up"  method="POST" action="/otp1">
       <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
       <br><br>
            <h2>LOGIN</h2>
-           <input type="email" placeholder="Email" class="txtEmail" name="hod" required/>
+           <input type="email" placeholder="Email" class="txtEmail" name="hodmail" required/>
            <!-- <input type="password" placeholder="Password" id="password_hod" minlength="8" maxlength="15" required/> -->
       <button type="submit" class="btn_sign_up" id="submit">HOD</button>
          </form>
