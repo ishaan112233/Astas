@@ -771,7 +771,9 @@ const detailListWithFunctionality = (req,res) => {
          })
 }
 
-
+const bookVenue = (req,res) =>{
+  res.render('bookvenue')
+}
 
 
 
@@ -806,5 +808,6 @@ module.exports = {
   search,
   findtimetable,
   findtable,
-  detailListWithFunctionality
+  detailListWithFunctionality,
+  bookVenue
 };
