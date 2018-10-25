@@ -122,7 +122,7 @@ const sendtimetable = function(req, res)
             .status(400)
             .json(err);
         } else {
-            res.render('showtable',{
+            res.render('layout',{
             data:makeTable
           });
         }
@@ -771,11 +771,6 @@ const detailListWithFunctionality = (req,res) => {
          })
 }
 
-const bookVenue = (req,res) =>{
-  res.render('bookvenue')
-}
-
-
 
 
 
@@ -809,5 +804,5 @@ module.exports = {
   findtimetable,
   findtable,
   detailListWithFunctionality,
-  bookVenue
+
 };

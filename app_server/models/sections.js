@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const sectionsSchema = new Schema({
     Stream:{
-       type:String 
+       type:String
 
     },
     Year:{
@@ -45,42 +45,42 @@ const sectionsSchema = new Schema({
     },
     floor:{
         type:String,
-        
+
     },
     projector:{
         type:String,
-        
+
     },
     podium:{
         type:String,
-        
+
     },
     lanports:{
         type:String,
-        
+
     },
     powerports:{
         type:String,
-        
+
     },
     ac:{
         type:String,
 
-        type: String, 
+        type: String,
     },
     venue:{
         type:String,
-        
+
     },
     type:{
         type:String,
-        
+
     },
     floor:{
         type:String,
     },
     projector:{
-        type:String,  
+        type:String,
     },
     podium:{
         type:String,
@@ -97,39 +97,39 @@ const sectionsSchema = new Schema({
     },
     whiteboard:{
         type:String,
-        
+
     },
     chalkboard:{
         type:String,
-        
+
     },
     roundtable:{
         type:String,
-        
+
     },
     flexlayout:{
         type:String,
-        
+
     },
     av:{
         type:String,
-        
+
     },
     classtype:{
         type:String,
-        
+
     },
     nearparking:{
         type:String,
-        
+
     },
     nearwashroom:{
         type:String,
-        
+
     },
     nearlift:{
         type:String,
-        
+
     }
 })
 
@@ -138,5 +138,4 @@ const sectionsSchema = new Schema({
 
 mongoose.model('section',sectionsSchema)
 
-mongoose.model('section',sectionsSchema);
-
+//mongoose.model('section',sectionsSchema);
