@@ -821,6 +821,29 @@ const otp1 = function(req,res){
     // }
   });
 };
+
+
+
+
+const detailListWithFunctionality = (req,res) => {
+ uploadedVenues.find({})
+         .then(venues => {
+           res.render('displayVenuesAll',{
+             venues:venues
+           })
+         })
+}
+
+const bookVenue = (req,res) =>{
+  res.render('bookvenue')
+}
+
+
+
+
+
+
+
 module.exports = {
   index,
   timeTable,
@@ -850,7 +873,12 @@ module.exports = {
   search,
   findtimetable,
   findtable,
+
+  detailListWithFunctionality,
+  bookVenue
+
   createmod,
   verifymod,
   modotp
+
 };
