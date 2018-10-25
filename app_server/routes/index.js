@@ -84,5 +84,6 @@ router.post('/section-requirements',ctrlmain.showSectionRequirements);
 
 router.get('/section-requirements/list',ctrlmain.showListOfRequirements);
 
+router.get('/venues-list/details',ctrlmain.detailListWithFunctionality);
 
 module.exports = router;

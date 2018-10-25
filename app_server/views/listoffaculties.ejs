@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-      
+
 </head>
 <body>
 
@@ -19,6 +19,7 @@
                     <a class="nav-item nav-link active" href="/moderator">Add Faculty <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="/list-of-faculties">Faculties</a>
                     <a class="nav-item nav-link" href="/upload-list" >Upload</a>
+                    <a class="nav-item nav-link" href="/venues-list/details">Venues</a>
                     <!-- <a class="nav-item nav-link" href="#">Pricing</a> -->
 
                   </div>
@@ -45,29 +46,29 @@
         </div>
       </div>
         <div class="row">
-         <div class="col md-3"> 
+         <div class="col md-3">
           <p class="card-text"><b>Contact:</b><%= members.Fcontact   %></p>
          </div>
-         <div class="col md-3"> 
+         <div class="col md-3">
           <p class="card-text"><b>Email:</b><%= members.Femail   %></p>
          </div>
-         <div class="col md-3"> 
+         <div class="col md-3">
           <p class="card-text"><b>Class:</b><%= members.Fclass   %></p>
          </div>
-         <div class="col md-3"> 
+         <div class="col md-3">
           <p class="card-text"><b>Year:</b><%= members.Fyear   %></p>
          </div>
         </div><br>
         <div class="row" style="float:right;">
-         <div class="col md-3"> 
+         <div class="col md-3">
           <p class="card-text"><b>Previous Subjects:</b><%= members.Fpsubject   %></p>
          </div>
-         <div class="col md-3"> 
+         <div class="col md-3">
           <p class="card-text"><b>Calender Year:</b><%= members.Fpyear   %></p>
          </div>
          <div class="col md-3">
           <p class="card-text"><b>Previous Section:</b><%= members.Fpclass   %></p>
-         </div>  
+         </div>
         </div><br>
         <div class="row mt-5 ml-5" style="float:right;">
           <div class="col md-6">
@@ -78,11 +79,11 @@
            </div>
         </div>
         <br>
-        <a href="/list-of-faculties/edit/<%= members._id %>" class="btn btn-info w-25">Edit</a>   
+        <a href="/list-of-faculties/edit/<%= members._id %>" class="btn btn-info w-25">Edit</a>
         <form action="/list-of-faculties/<%= members.id %>?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE"><br>
           <input type="submit" class="btn btn-danger w-25" value="Delete">
-         </div> 
+         </div>
         </form>
       </div>
     </div>
@@ -95,5 +96,3 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </html>
-
-

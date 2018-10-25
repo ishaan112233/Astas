@@ -39,7 +39,7 @@ const upload1 = multer({
     }
     console.log(file.mimetype)
       cb('Error: Excel files Only')
-    
+
   }
 }).single('file1');
 
@@ -56,14 +56,14 @@ const upload2 = multer({
     }
     console.log(file.mimetype)
       cb('Error: Excel files Only')
-    
+
   }
 }).single('file2');
 
 
 
 
-/* GET home page */ 
+/* GET home page */
 
 const index = function(req, res){
   res.render('index', { title: 'Routed through Controller main.js' });
@@ -79,10 +79,10 @@ const timeTable = (req,res) => {
             })
 }
 
-const sendtimetable = function(req, res) 
+const sendtimetable = function(req, res)
 {
   let errors = [];
-  let data = [];  
+  let data = [];
     if(!req.body.Stream){
         errors.push({text: 'Please add Stream for which You made timetable'})
     }
@@ -110,10 +110,10 @@ const sendtimetable = function(req, res)
           Year: req.body.Year,
           Day:req.body.Day,
           Subject: req.body.Subject,
-          Venue: req.body.Venue,  
+          Venue: req.body.Venue,
           id: req.body.section
         }
-      
+
         sendTimetables.create(
         makeTable,
        (err,sendTimetables) => {
@@ -121,7 +121,7 @@ const sendtimetable = function(req, res)
           res
             .status(400)
             .json(err);
-        } else { 
+        } else {
             res.render('showtable',{
             data:makeTable
           });
@@ -138,7 +138,7 @@ const facultiesList = (req,res) =>{
     Femail: req.body.mail,
     Fid:req.body.Fid,
     Fname:req.body.Fname,
-    Fsubject:req.body.Fsubject, 
+    Fsubject:req.body.Fsubject,
     Fcontact:req.body.Fcontact,
     Fposition:req.body.Fposition,
     Flectures:req.body.Flectures,
@@ -147,14 +147,14 @@ const facultiesList = (req,res) =>{
     Fpsubject:req.body.Fpsubject,
     Fpyear:req.body.Fpyear,
     Fpclass:req.body.Fpclass
-} 
-  
+}
+
     new facultyAdd(faculties)
         .save()
         .then(e=>{
           res.redirect('/list-of-faculties')
         })
-  
+
 };
 
 const showTeacher = (req,res) =>{
@@ -171,7 +171,7 @@ const showAllFaculties = (req,res) =>{
      .sort()
      .then(staff => {
       res.render('listoffaculties',{
-           staff: staff        
+           staff: staff
       })
      })
 }
@@ -278,7 +278,7 @@ const showFilesData = (req,res) =>{
           console.log('it is xls file')
         }
         console.log(req.file);
-       
+
 
         try{
           exceltojson({
@@ -292,11 +292,11 @@ const showFilesData = (req,res) =>{
               return;
             }
             let randomRest = [];
-           
+
             res.render('upload',{
                 uploadedData:result
             })
-        
+
 
            result.forEach((rest)=>{
              facultyAdd.create({
@@ -312,7 +312,7 @@ const showFilesData = (req,res) =>{
               Fpyear:rest.year,
               Fcontact:rest.contact,
              // Branch:rest.branch,
-              Fpclass:rest.p_section       
+              Fpclass:rest.p_section
             },(err,rec)=>{
               if(err){
                 console.log(err)
@@ -321,7 +321,7 @@ const showFilesData = (req,res) =>{
             })
            })
           })
-      
+
         }
         catch(e){
           res.send('Corrupted Excel file')
@@ -349,7 +349,7 @@ const venueList = (req,res) => {
         else{
           exceltojson = xlstojson;
         }
-       
+
         try{
           exceltojson({
             input: req.file.path,
@@ -360,7 +360,7 @@ const venueList = (req,res) => {
               res.send(err)
               return;
             }
-            
+
           result.forEach(rest => {
              uploadedVenues.create({
               food:rest.food,
@@ -369,6 +369,7 @@ const venueList = (req,res) => {
               type:rest.type,
               floor:rest.floor,
               venuecapacity:rest.venuecapacity,
+              chalkboard:rest.chalkboard,
               projector:rest.projector,
               podium:rest.podium,
               lanports:rest.lanports,
@@ -381,7 +382,7 @@ const venueList = (req,res) => {
               classtype:rest.classtype,
               nearparking:rest.nearparking,
               nearwashroom:rest.nearwashroom,
-              nearlift:rest.nearlift  
+              nearlift:rest.nearlift
              },
              (err,rec)=>{
               if(err){
@@ -394,13 +395,13 @@ const venueList = (req,res) => {
   //          res.render('venuesList',{
     //          uploadedData:result
       //      })
-          })  
+          })
         }
         catch(e){
           res.send('Corrupted Excel file')
         }
       }
-    }) 
+    })
 }
 
 const showAllVenues = (req,res)=>{
@@ -430,7 +431,7 @@ const sectionsList = (req,res) => {
         else{
           exceltojson = xlstojson;
         }
-       
+
         try{
           exceltojson({
             input: req.file.path,
@@ -441,7 +442,7 @@ const sectionsList = (req,res) => {
               res.send(err)
               return;
             }
-            
+
           result.forEach(rest => {
              section.create({
               Section:rest.section,
@@ -467,22 +468,19 @@ const sectionsList = (req,res) => {
               classtype:rest.classtype,
               nearparking:rest.nearparking,
               nearwashroom:rest.nearwashroom,
-              nearlift:rest.nearlift  
+              nearlift:rest.nearlift
              })
            })
-//         console.log(uploadedVenues.food)
-  //          res.render('venuesList',{
-    //          uploadedData:result
-      //      })
-          })  
+          })
+          //res.redirect('/venues-list/details')
         }
         catch(e){
           res.send('Corrupted Excel file')
         }
       }
-    }) 
+    })
 
-  
+
 }
 
 
@@ -519,7 +517,7 @@ const showSectionRequirements = (req,res) => {
         else{
           exceltojson = xlstojson;
         }
-       
+
         try{
           exceltojson({
             input: req.file.path,
@@ -530,7 +528,7 @@ const showSectionRequirements = (req,res) => {
               res.send(err)
               return;
             }
-            
+
           result.forEach(rest => {
              section.create({
               Stream:rest.stream,
@@ -538,10 +536,10 @@ const showSectionRequirements = (req,res) => {
               Section:rest.section,
               Students:rest.students,
               Faculty:rest.faculty.split(","),
-              Subjects:rest.subjects.split(","), 
+              Subjects:rest.subjects.split(","),
               food:rest.food,
-              block:rest.block,
               venue:rest.venue,
+              block:rest.block,
               type:rest.type,
               floor:rest.floor,
               projector:rest.projector,
@@ -556,7 +554,7 @@ const showSectionRequirements = (req,res) => {
               classtype:rest.classtype,
               nearparking:rest.nearparking,
               nearwashroom:rest.nearwashroom,
-              nearlift:rest.nearlift  
+              nearlift:rest.nearlift
              },
              (err,rec)=>{
               if(err){
@@ -569,15 +567,15 @@ const showSectionRequirements = (req,res) => {
   //          res.render('venuesList',{
     //          uploadedData:result
       //      })
-          })  
+          })
         }
         catch(e){
           res.send('Corrupted Excel file')
         }
       }
-    }) 
+    })
 
-    
+
 }
 
 const showListOfRequirements = (req,res) => {
@@ -727,7 +725,7 @@ const otp1 = function(req,res){
   // console.log(req.params);
   req.session.user = req.body.hodmail;
   facultyAdd.findOne({
-    Femail: req.body.hodmail  
+    Femail: req.body.hodmail
   },(err,facultyAdd)=>{
     data = facultyAdd;
     // console.log(data.Fposition);
@@ -742,7 +740,7 @@ const otp1 = function(req,res){
       .redirect('error');
     }
     else if(req.session.user){
-    
+
       // else{
           const contactNumber = data.Fcontact;
           const senderId = "KARUPS";
@@ -761,6 +759,24 @@ const otp1 = function(req,res){
     // }
   });
 };
+
+
+
+const detailListWithFunctionality = (req,res) => {
+ uploadedVenues.find({})
+         .then(venues => {
+           res.render('displayVenuesAll',{
+             venues:venues
+           })
+         })
+}
+
+
+
+
+
+
+
 module.exports = {
   index,
   timeTable,
@@ -789,5 +805,6 @@ module.exports = {
   otp1,
   search,
   findtimetable,
-  findtable
+  findtable,
+  detailListWithFunctionality
 };
