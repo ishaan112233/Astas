@@ -51,15 +51,18 @@ const hodschema = new Schema({
 //     type: String
 //     }
 });
-// const moderator = new Schema({
-//     email: {
-//         type: String
-//     },
-//     // password: {
-//     //     type: String
-//     // }
-// })
+const moderator = new Schema({
+    email: {
+        type: String
+    },
+    phone: {
+        type: String
+    }
+    // password: {
+    //     type: String
+    // }
+})
 mongoose.model('teacher',teacherschema);
 mongoose.model('hod',hodschema);
 mongoose.model('sendTimetables',SendTimetableSchema);
-// mongoose.model('moderator',moderator);
+mongoose.model('moderator',moderator);

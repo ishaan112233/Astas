@@ -1,8 +1,8 @@
 const mongoose=require('mongoose');
 const express = require('express');
 const path = require('path');
-
-// let dbURI= 'mongodb://astas:astas123@ds121753.mlab.com:21753/astas';
+//const MONGOLAB_URI = 'mongodb://astas:astas123@ds121753.mlab.com:21753/astas';
+//var dbURI= process.env.MONGOLAB_URI;
 if(process.env.NODE_ENV=='production'){
     dbURI=process.env.MONGODB_URI;
 }
@@ -43,14 +43,8 @@ process.on('SIGTERM', () => {
     process.exit(0);
   });
 });
-
-
+require('./sections');
+require('./uploadedFaculty');
 require('./SendTimetable');
 require('./FacultyAdd');
-require('./uploadedFaculty');
-
-require('./sections')
-
-require('./sections');
-
 

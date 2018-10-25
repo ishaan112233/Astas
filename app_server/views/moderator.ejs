@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
+      
 </head>
 <body>
 
@@ -19,7 +19,7 @@
                     <a class="nav-item nav-link active" href="/moderator">Add Faculty <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="/list-of-faculties">Faculties</a>
                     <a class="nav-item nav-link" href="/upload-list" >Upload</a>
-                    <a class="nav-item nav-link" href="/venues-list/details">Venues</a>
+                    <a class="nav-item nav-link" href="/signup" >Moderator</a>
                     <!-- <a class="nav-item nav-link" href="#">Pricing</a> -->
 
                   </div>
@@ -27,10 +27,10 @@
               </nav>
 
 
-    <h3 class="text-center">Add Faculty Here</h3><br>
-
+    <h3 class="text-center">Add Faculty Here</h3><br> 
+      
     <form style="width:60%;padding:5%;border:1px solid #e8e8e8;height:80%; margin-left:4%;" method="POST" action="/list-of-faculties" >
-       <div style="margin-top:-8%;">
+       <div style="margin-top:-8%;"> 
           <div class="form-group col-md-8">
             <label for="Id"><b>Id</b></label>
             <input type="text" class="form-control" name="Fid" required placeholder="Faculty's Id">
@@ -62,7 +62,7 @@
           <div class="form-group col-md-8">
             <label for="year"><b>Year:</b></label>
             <input type="number" class="form-control" name="Fyear"  placeholder="Enter Teaching Year">
-          </div>
+          </div> 
           <div class="form-group col-md-8">
             <label for="previous-subject"><b>Previous Taught Subject:</b></label>
             <input type="text" class="form-control" name="Fpsubject"  placeholder="Enter previous Teaching subjects">
@@ -70,7 +70,7 @@
           <div class="form-group col-md-8">
             <label for="pyear"><b>Previous Year:</b></label>
             <input type="number" class="form-control" name="Fpyear"  placeholder="Enter previous Teaching Year">
-          </div>
+          </div> 
           <div class="form-group col-md-8">
             <label for="psection"><b>Previous Taught Sections:</b></label>
             <input type="text" class="form-control" name="Fpclass"  placeholder="Enter previous Classes">
@@ -88,11 +88,11 @@
             </select>
           </div>
         <button type="submit" class="btn btn-primary w-25">Save</button>
-    </div>
+    </div> 
       </form>
 
 </body>
-
+ 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
