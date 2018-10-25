@@ -749,7 +749,7 @@ const findtable = function(req,res){
     id: req.body.section
   },(err,sendTimetables)=>{
     data = sendTimetables;
-    console.log(data.id);
+    // console.log(data.id);
     if(!sendTimetables){
       res
       .status(404)
@@ -837,13 +837,6 @@ const detailListWithFunctionality = (req,res) => {
 const bookVenue = (req,res) =>{
   res.render('bookvenue')
 }
-
-
-
-
-
-
-
 module.exports = {
   index,
   timeTable,
@@ -873,12 +866,9 @@ module.exports = {
   search,
   findtimetable,
   findtable,
-
   detailListWithFunctionality,
-  bookVenue
-
+  bookVenue,
   createmod,
   verifymod,
   modotp
-
 };
