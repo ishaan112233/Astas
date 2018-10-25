@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V6</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="stylesheets/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="stylesheets/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="stylesheets/util1.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/main1.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-85 p-b-20">
+				<form class="login100-form validate-form" onsubmit="return checkEmail()" method="POST" action="/verify-moderator">
+					<span class="login100-form-title p-b-70">
+						Welcome
+					</span>
+					<span class="login100-form-avatar">
+						<img src="http://califesciencesinstitute.org/wp-content/uploads/2018/05/person-icon-5-295x300.png" alt="AVATAR">
+					</span>
+
+					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter Email">
+						<input class="input100" type="text" id="email" name="moderator">
+						<span class="focus-input100" data-placeholder="Email"></span>
+					</div>
+					<!-- <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter Email">
+						<input class="input100" type="tel" id="email" name="modtel" maxlength="10" minlength="10">
+						<span class="focus-input100" data-placeholder="Email"></span>
+					</div> -->
+
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn" >
+							Login
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="javascripts/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="javascripts/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="javascripts/popper.js"></script>
+	<script src="javascripts/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="javascripts/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="javascripts/moment.min.js"></script>
+	<script src="javascripts/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="javascripts/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="javascripts/main1.js"></script>
+	<script>
+		function checkEmail() {
+		var email = document.getElementById('email');
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+		if (!filter.test(email.value)) {
+			alert('Please provide a valid email address');
+			document.getElementById('email').reset();
+		email.focus;
+		// email.reset
+		return false;
+		  }
+		}
+		</script>
+</body>
+</html>
