@@ -120,8 +120,13 @@ const sendtimetable = function(req, res)
           res
             .status(400)
             .json(err);
+
+        } else {
+            res.render('layout',{
+
         } else { 
             res.render('showtable',{
+
             data:makeTable
           });
         }
@@ -834,9 +839,15 @@ const detailListWithFunctionality = (req,res) => {
          })
 }
 
+
+
+
+
+
 const bookVenue = (req,res) =>{
   res.render('bookvenue')
 }
+
 module.exports = {
   index,
   timeTable,

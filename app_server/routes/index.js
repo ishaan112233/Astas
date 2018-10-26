@@ -94,7 +94,5 @@ router.post('/section-requirements',ctrlmain.showSectionRequirements);
 router.get('/section-requirements/list',ctrlmain.showListOfRequirements);
 
 
-router.get('/venues-list/book-venue',ctrlmain.bookVenue)
-
 
 module.exports = router;
