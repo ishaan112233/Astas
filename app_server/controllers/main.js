@@ -10,10 +10,11 @@ const path = require('path');
 const exceltojson = require("xls-to-json-lc");
 const xlsxtojson = require("xlsx-to-json-lc");
 const SendOtp = require('sendotp');
+const moderator = mongoose.model('moderator');
 const sendOtp = new SendOtp('244087AEm1pdREMM5bced951',"Hi, your OTP is {{otp}}, please don't share it with ANYBODY!");
 sendOtp.setOtpExpiry('1');
 const storage = multer.diskStorage({
-  destination: '../../public/uploaded-files',
+  destination: './public/uploaded-files',
   filename: (req,file,cb) => {
       cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname) )
   }
@@ -39,7 +40,7 @@ const upload1 = multer({
     }
     console.log(file.mimetype)
       cb('Error: Excel files Only')
-
+    
   }
 }).single('file1');
 
@@ -56,14 +57,12 @@ const upload2 = multer({
     }
     console.log(file.mimetype)
       cb('Error: Excel files Only')
-
+    
   }
 }).single('file2');
 
 
-
-
-/* GET home page */
+/* GET home page */ 
 
 const index = function(req, res){
   res.render('index', { title: 'Routed through Controller main.js' });
@@ -79,10 +78,10 @@ const timeTable = (req,res) => {
             })
 }
 
-const sendtimetable = function(req, res)
+const sendtimetable = function(req, res) 
 {
   let errors = [];
-  let data = [];
+  let data = [];  
     if(!req.body.Stream){
         errors.push({text: 'Please add Stream for which You made timetable'})
     }
@@ -110,10 +109,10 @@ const sendtimetable = function(req, res)
           Year: req.body.Year,
           Day:req.body.Day,
           Subject: req.body.Subject,
-          Venue: req.body.Venue,
+          Venue: req.body.Venue,  
           id: req.body.section
         }
-
+      
         sendTimetables.create(
         makeTable,
        (err,sendTimetables) => {
@@ -121,8 +120,13 @@ const sendtimetable = function(req, res)
           res
             .status(400)
             .json(err);
+
         } else {
             res.render('layout',{
+
+        } else { 
+            res.render('showtable',{
+
             data:makeTable
           });
         }
@@ -138,7 +142,7 @@ const facultiesList = (req,res) =>{
     Femail: req.body.mail,
     Fid:req.body.Fid,
     Fname:req.body.Fname,
-    Fsubject:req.body.Fsubject,
+    Fsubject:req.body.Fsubject, 
     Fcontact:req.body.Fcontact,
     Fposition:req.body.Fposition,
     Flectures:req.body.Flectures,
@@ -147,14 +151,14 @@ const facultiesList = (req,res) =>{
     Fpsubject:req.body.Fpsubject,
     Fpyear:req.body.Fpyear,
     Fpclass:req.body.Fpclass
-}
-
+} 
+  
     new facultyAdd(faculties)
         .save()
         .then(e=>{
           res.redirect('/list-of-faculties')
         })
-
+  
 };
 
 const showTeacher = (req,res) =>{
@@ -171,7 +175,7 @@ const showAllFaculties = (req,res) =>{
      .sort()
      .then(staff => {
       res.render('listoffaculties',{
-           staff: staff
+           staff: staff        
       })
      })
 }
@@ -278,7 +282,7 @@ const showFilesData = (req,res) =>{
           console.log('it is xls file')
         }
         console.log(req.file);
-
+       
 
         try{
           exceltojson({
@@ -292,11 +296,11 @@ const showFilesData = (req,res) =>{
               return;
             }
             let randomRest = [];
-
+           
             res.render('upload',{
                 uploadedData:result
             })
-
+        
 
            result.forEach((rest)=>{
              facultyAdd.create({
@@ -305,14 +309,14 @@ const showFilesData = (req,res) =>{
               Fname:rest.faculty_name,
               Fposition:rest.position,
               Flectures:rest.lectures,
-              Fsubject:rest.subjects,
+              Fsubject:rest.subjects.split(','),
               Fclass:rest.section,
               Fyear:rest.currentt_year,
               Fpsubject:rest.pastsubjects,
               Fpyear:rest.year,
               Fcontact:rest.contact,
              // Branch:rest.branch,
-              Fpclass:rest.p_section
+              Fpclass:rest.p_section       
             },(err,rec)=>{
               if(err){
                 console.log(err)
@@ -321,7 +325,7 @@ const showFilesData = (req,res) =>{
             })
            })
           })
-
+      
         }
         catch(e){
           res.send('Corrupted Excel file')
@@ -349,7 +353,7 @@ const venueList = (req,res) => {
         else{
           exceltojson = xlstojson;
         }
-
+       
         try{
           exceltojson({
             input: req.file.path,
@@ -360,7 +364,7 @@ const venueList = (req,res) => {
               res.send(err)
               return;
             }
-
+            
           result.forEach(rest => {
              uploadedVenues.create({
               food:rest.food,
@@ -369,7 +373,6 @@ const venueList = (req,res) => {
               type:rest.type,
               floor:rest.floor,
               venuecapacity:rest.venuecapacity,
-              chalkboard:rest.chalkboard,
               projector:rest.projector,
               podium:rest.podium,
               lanports:rest.lanports,
@@ -382,7 +385,7 @@ const venueList = (req,res) => {
               classtype:rest.classtype,
               nearparking:rest.nearparking,
               nearwashroom:rest.nearwashroom,
-              nearlift:rest.nearlift
+              nearlift:rest.nearlift  
              },
              (err,rec)=>{
               if(err){
@@ -395,13 +398,13 @@ const venueList = (req,res) => {
   //          res.render('venuesList',{
     //          uploadedData:result
       //      })
-          })
+          })  
         }
         catch(e){
           res.send('Corrupted Excel file')
         }
       }
-    })
+    }) 
 }
 
 const showAllVenues = (req,res)=>{
@@ -431,7 +434,7 @@ const sectionsList = (req,res) => {
         else{
           exceltojson = xlstojson;
         }
-
+       
         try{
           exceltojson({
             input: req.file.path,
@@ -442,7 +445,7 @@ const sectionsList = (req,res) => {
               res.send(err)
               return;
             }
-
+            
           result.forEach(rest => {
              section.create({
               Section:rest.section,
@@ -468,19 +471,22 @@ const sectionsList = (req,res) => {
               classtype:rest.classtype,
               nearparking:rest.nearparking,
               nearwashroom:rest.nearwashroom,
-              nearlift:rest.nearlift
+              nearlift:rest.nearlift  
              })
            })
-          })
-          //res.redirect('/venues-list/details')
+//         console.log(uploadedVenues.food)
+  //          res.render('venuesList',{
+    //          uploadedData:result
+      //      })
+          })  
         }
         catch(e){
           res.send('Corrupted Excel file')
         }
       }
-    })
+    }) 
 
-
+  
 }
 
 
@@ -517,7 +523,7 @@ const showSectionRequirements = (req,res) => {
         else{
           exceltojson = xlstojson;
         }
-
+       
         try{
           exceltojson({
             input: req.file.path,
@@ -528,7 +534,7 @@ const showSectionRequirements = (req,res) => {
               res.send(err)
               return;
             }
-
+            
           result.forEach(rest => {
              section.create({
               Stream:rest.stream,
@@ -536,10 +542,10 @@ const showSectionRequirements = (req,res) => {
               Section:rest.section,
               Students:rest.students,
               Faculty:rest.faculty.split(","),
-              Subjects:rest.subjects.split(","),
+              Subjects:rest.subjects.split(","), 
               food:rest.food,
-              venue:rest.venue,
               block:rest.block,
+              venue:rest.venue,
               type:rest.type,
               floor:rest.floor,
               projector:rest.projector,
@@ -554,7 +560,7 @@ const showSectionRequirements = (req,res) => {
               classtype:rest.classtype,
               nearparking:rest.nearparking,
               nearwashroom:rest.nearwashroom,
-              nearlift:rest.nearlift
+              nearlift:rest.nearlift  
              },
              (err,rec)=>{
               if(err){
@@ -567,15 +573,15 @@ const showSectionRequirements = (req,res) => {
   //          res.render('venuesList',{
     //          uploadedData:result
       //      })
-          })
+          })  
         }
         catch(e){
           res.send('Corrupted Excel file')
         }
       }
-    })
+    }) 
 
-
+    
 }
 
 const showListOfRequirements = (req,res) => {
@@ -626,13 +632,13 @@ const otp = function(req,res){
     if(data.Fposition==='HOD'){
       res
       .status(404)
-      .redirect('error');
+      .rednder('error');
     }
     else{
       if(!facultyAdd){
         res
         .status(404)
-        .redirect('error');
+        .render('error');
       }
       else{
           const contactNumber = data.Fcontact;
@@ -652,7 +658,69 @@ const otp = function(req,res){
     }
   });
 };
+const modotp = function(req,res){
+  console.log(data.modtel);
+  var contactNumber = data.phone;
+  const otp = req.body.otp;
+  sendOtp.verify(contactNumber, otp, (err, Vdata) => {
+    if(Vdata.type!='success') {
+      res
+      .status(404)
+      .render('error');
+    }
+    else{
+      // console.log(data.Fposition);
+        res
+          .status(201)
+          .redirect('/moderator');
+    }
+  });
+}
 
+const createmod = function(req,res){
+  moderator.create({
+    email: req.body.moderator,
+    phone: req.body.modtel
+  },(err,moderator)=>{
+    if(!moderator){
+      res
+      .status(404)
+      .render('error');
+    }
+    else{
+      res.redirect('/');
+    }
+  });
+};
+
+const verifymod = function(req,res){
+    moderator.findOne({
+      email: req.body.moderator
+    },(err,moderator)=>{
+      data = moderator;
+      if(!data){
+        res
+        .status(404)
+        .render('error');
+      }
+      else{
+        const contactNumber = data.phone;
+        const senderId = "KARUPS";
+        sendOtp.send(contactNumber, senderId, (err, data, response) => {
+        if(err) {
+          res
+          .status(404)
+          ,render('error');
+        }
+        else{
+          res
+          .status(201)
+          .render('modotp');
+        }
+      });
+    }
+    });
+};
 const verifyOtp = function(req,res){
   // console.log(data.Fcontact);
   var contactNumber = data.Fcontact;
@@ -661,7 +729,7 @@ const verifyOtp = function(req,res){
     if(Vdata.type!='success') {
       res
       .status(404)
-      .redirect('error');
+      .render('error');
     }
     else{
       // console.log(data.Fposition);
@@ -686,7 +754,7 @@ const findtable = function(req,res){
     id: req.body.section
   },(err,sendTimetables)=>{
     data = sendTimetables;
-    console.log(data.id);
+    // console.log(data.id);
     if(!sendTimetables){
       res
       .status(404)
@@ -707,6 +775,7 @@ const search = function(req,res){
   },(err,facultyAdd)=>{
     // facultyAdd.Fsubject.split
     staff = facultyAdd;
+    // console.log(staff.Fsubject);
     // console.log(staff);
     if(staff.length==0){
       res
@@ -723,9 +792,9 @@ const search = function(req,res){
 const otp1 = function(req,res){
   // console.log(req.body.hodmail);
   // console.log(req.params);
-  req.session.user = req.body.hodmail;
+  // req.session.user = req.body.hodmail;
   facultyAdd.findOne({
-    Femail: req.body.hodmail
+    Femail: req.body.hodmail  
   },(err,facultyAdd)=>{
     data = facultyAdd;
     // console.log(data.Fposition);
@@ -737,28 +806,27 @@ const otp1 = function(req,res){
     if(data.Fposition!=='HOD'){
       res
       .status(404)
-      .redirect('error');
+      .render('error');
     }
-    else if(req.session.user){
-
-      // else{
-          const contactNumber = data.Fcontact;
-          const senderId = "KARUPS";
-          sendOtp.send(contactNumber, senderId, (err, data, response) => {
-          if(err) {
-            console.log(err);
-            return;
-          }
-          else{
-            res
-            .status(201)
-            .render('otp');
-          }
-        });
+    else{
+      const contactNumber = data.Fcontact;
+      const senderId = "KARUPS";
+      sendOtp.send(contactNumber, senderId, (err, data, response) => {
+      if(err) {
+        console.log(err);
+        return;
       }
+      else{
+        res
+        .status(201)
+        .render('otp');
+       }
+       });
+     }
     // }
   });
 };
+
 
 
 
@@ -773,6 +841,12 @@ const detailListWithFunctionality = (req,res) => {
 
 
 
+
+
+
+const bookVenue = (req,res) =>{
+  res.render('bookvenue')
+}
 
 module.exports = {
   index,
@@ -804,5 +878,8 @@ module.exports = {
   findtimetable,
   findtable,
   detailListWithFunctionality,
-
+  bookVenue,
+  createmod,
+  verifymod,
+  modotp
 };

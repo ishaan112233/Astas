@@ -48,6 +48,7 @@ router.get('/showtimetable/:id', ctrlmain.findtimetable);
 router.get('/moderator',(req,res)=>{
      res.render('moderator');
 });
+
 router.post('/otp',ctrlmain.otp);
 router.post('/otp1',ctrlmain.otp1);
 router.get('/logout',function(req,res){
@@ -56,7 +57,15 @@ router.get('/logout',function(req,res){
 router.post('/list-of-faculties/search',ctrlmain.search);
 router.post('/findtable',ctrlmain.findtable);
 router.get('/list-of-faculties',ctrlmain.showAllFaculties);
-
+router.post('/moderator',ctrlmain.createmod);
+router.post('/verify-moderator',ctrlmain.verifymod);
+router.post('/modotp',ctrlmain.modotp);
+router.get('/signup',function(req,res){
+    res.render('mode_signup')
+});
+router.get('/mod_login',function(req,res){
+    res.render('mod_login');
+});
 router.post('/list-of-faculties',ctrlmain.facultiesList)
 
 router.get('/list-of-faculties/edit/:id',ctrlmain.editFaculties);
@@ -72,7 +81,7 @@ router.post('/upload/list',ctrlmain.showFilesData)
 router.post('/venues-list',ctrlmain.venueList)
 
 router.get('/venues-list',ctrlmain.showAllVenues)
-
+router.get('/venues-list/details',ctrlmain.detailListWithFunctionality);
 
 router.post('/sections-list',ctrlmain.sectionsList);
 
@@ -84,7 +93,6 @@ router.post('/section-requirements',ctrlmain.showSectionRequirements);
 
 router.get('/section-requirements/list',ctrlmain.showListOfRequirements);
 
-router.get('/venues-list/details',ctrlmain.detailListWithFunctionality);
 
 
 module.exports = router;
