@@ -81,7 +81,7 @@ router.post('/upload/list',ctrlmain.showFilesData)
 router.post('/venues-list',ctrlmain.venueList)
 
 router.get('/venues-list',ctrlmain.showAllVenues)
-
+router.get('/venues-list/details',ctrlmain.detailListWithFunctionality);
 
 router.post('/sections-list',ctrlmain.sectionsList);
 
