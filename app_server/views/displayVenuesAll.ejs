@@ -28,7 +28,6 @@
           <a class="nav-item nav-link" href="/list-of-faculties">Faculties</a>
           <a class="nav-item nav-link" href="/upload-list" >Upload</a>
           <a class="nav-item nav-link" href="/venues-list/details">Venues</a>
-
         </div>
       </div>
     </nav>
@@ -169,10 +168,11 @@
    $(function() {
       $('#timepicker-14').timepicker();
    });
-
+     var val;
    function displayIcon(){
-     var val = document.getElementById("showIcon");
+      val = document.getElementById("showIcon");
      val.innerHTML='<img src="https://png.icons8.com/color/64/000000/verified-account.png" >';
+      val = null;
    }
 </script>
 
