@@ -1,43 +1,23 @@
 # Complex Scheduling Project
 
-This is the code for the sample 'Loc8r' application that is built through the course of my book Getting MEAN Second Edition.
+This project is used to manage Timetable of an Organisation along with Various Constraints like suppose a Faculty member has been allocated some Duity at some point of time on some particular day ,so we need to make sure that that particular faculty is not allocated duity on the same point of time.Also You can add new Faculties data either by entering data for each faculty and then save that, else there is a more convinient way You can Upload a Excel File containing all the data of Faculty of College.
 
-Getting MEAN Second Edition is published by Manning, and teaches readers how to develop web applications end-to-end using the MEAN stack with Node 6 and Angular 2. It is currently in early access through the MEAP program, with new chapters being released regularly.
+There is also a feature that you can book a particular venue for a particular point of time on for some duration.For uploading data of Venues You need to upload Excel file in a specified format set by us,else it won't properly.You can book a Book a venue by selecting the duration and date for that particular venue and then that venue can't be book by anyone in near Future at that particular point of time.
 
-> Note: if you have the First Edition of the book using Node 4 and Angular 1 you need the [First Edition code](https://github.com/simonholmes/getting-MEAN/) instead.
+Teachers and HOD's of respective  Department can login with their University's Email id and OTP will be sent to their mobile number save in the database.Then they need to login with that particular OTP only.After Logging in Teachers can View their Timetable.
 
-## The application at various stages
+Students can check their Timetables after selecting their respective details of Classes, then they need to click on Show timetable to Check their Timetable.
 
-There will be named branches for the various states of the code throughout the book:
+There is one more option for making Timetable where one can make a timetable for a particular class with their respective subjects and venues for that particular lecture and selecting faculty for that particular Venue and that thing will also be shown in faculty's timetable that they have so and so class at some venue.
 
-* `master` **Chapter 3 start**: A blank Express 4.14.0 project
-* `chapter-03` **Chapter 3 end**: Creating and setting up a MEAN project
-* `chapter-04-views` **Chapter 4 mid-point**: The data is hard coded into views
-* `chapter-04` **Chapter 4 end**: Building a static site with Node.js and Express
-* `chapter-05` **Chapter 5**: Building a data model with MongoDB and Mongoose
-* `chapter-06` **Chapter 6**: Writing a REST API: Exposing your MongoDB database to the application
-* `chapter-07` **Chapter 7**: Consuming a REST API: Using an API from inside Express
-* `chapter-08` **Chapter 8**: Creating an Angular application with TypeScript
-* `chapter-09` **Chapter 9**: Building a Single Page Application with Angular: Foundations
-* `chapter-10` **Chapter 10**: Building a Single Page Application with Angular: The next level
-* `chapter-11` **Chapter 11**: Authenticating users, managing sessions and securing APIs
+# Install Dependencies
 
-## Get the code
+You need to make sure that You have Node and npm installed.
+Along with that You need to Install Mongodb which we have Used as our database.
+Then just type " npm install " in terminal and all the dependencies will get installed.
 
-Pre-requisites:
+After Doing all these thing Project is set up and You can run on Your localhost at port 3000
 
-* Git installed
-* A command line interface capable of running Git commands
-* Node v6 installed (don't use 7 as it is unstable)
+# Technologies Used
 
-To get the code for a specific branch:
-
-`$ git clone -b branch-name https://github.com/simonholmes/getting-MEAN-2.git`
-
-Then change into the folder the git clone command will create:
-
-`$ cd getting-MEAN-2`
-
-And finally install the dependencies:
-
-`npm install`
+Node js,Express js,Mongodb and mlab as our remote Database
