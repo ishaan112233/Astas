@@ -11,7 +11,7 @@ const exceltojson = require("xls-to-json-lc");
 const xlsxtojson = require("xlsx-to-json-lc");
 const SendOtp = require('sendotp');
 const moderator = mongoose.model('moderator');
-const sendOtp = new SendOtp('244087AEm1pdREMM5bced951',"Hi, your OTP is {{otp}}, please don't share it with ANYBODY!");
+const sendOtp = new SendOtp('278109AXEVsO3oS5ce7c4b4',"Hi, your OTP is {{otp}}, please don't share it with ANYBODY!");
 sendOtp.setOtpExpiry('1');
 const storage = multer.diskStorage({
   destination: './public/uploaded-files',
@@ -121,10 +121,12 @@ const sendtimetable = function(req, res)
             .status(400)
             .json(err);
 
-        } else {
-            res.render('layout',{
+        } 
+        // else {
+        //     res.render('layout',{
 
-        } else { 
+        // }
+         else { 
             res.render('showtable',{
 
             data:makeTable
