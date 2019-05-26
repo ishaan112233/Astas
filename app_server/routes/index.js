@@ -20,15 +20,6 @@ router.get('/stu_timetable',function(req,res,next){
 router.post('/faculties',ctrlmain.verifyOtp);
 router.get('/before-timetable',ctrlmain.formBeforeTimetable);
 
-
-// router.post('/teacher_page',ctrlmain.teacher);
-    // res.render('teacher');
-    // next();
-// });
-// router.post('/HOD',ctrlmain.hod);
-    // res.render('HOD');
-    // next();
-// });
 router.get('/make-timetable',ctrlmain.timeTable);
 
 router.get('/request',function(req,res,next){
