@@ -23,7 +23,7 @@
     "nodemailer": "^4.6.8",
     "nodemon": "^1.18.4",
     "otp-generator": "^1.1.0",
-    "pug": "~2.0.0-beta6",
+    "pug": "~3.0.1",
     "sendotp": "^1.2.9",
     "serve-favicon": "^2.5.0",
     "twilio": "^3.22.0",
